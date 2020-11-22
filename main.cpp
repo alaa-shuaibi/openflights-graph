@@ -3,6 +3,8 @@
 int main() {
     printf("hello world");
     return 0;
-}
 
-hi my name is C
+    //comment from Rahul
+    //test2 from Rahul
+    //test3 from Rahul
+}
