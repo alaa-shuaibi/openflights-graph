@@ -1,7 +1,8 @@
 #include <iostream>
-#include "practice.cpp"
+#include "traversal.h"
+#include "algorithms.h"
+//#include "practice.cpp"
 
 int main() {
-    foo();
     return 0;
 }

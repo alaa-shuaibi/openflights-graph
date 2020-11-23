@@ -12,6 +12,7 @@ void foo() {
  * Newline characters are also just characters in ASCII
  * 
  * This can also be adjusted to return a vector instead of a string
+ * Refer to the AMA slides to know how to do this.
  * 
  * @param filename The name of the file that will fill the string
  */
