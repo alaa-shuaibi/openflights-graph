@@ -4,6 +4,7 @@
 #include <cstdlib>
 
 void foo() {
+  printf("Hello, World!");
 }
 
 /**

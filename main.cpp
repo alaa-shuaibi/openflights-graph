@@ -1,6 +1,7 @@
 #include <iostream>
+#include "practice.cpp"
 
 int main() {
-    printf("Hello, World!");
+    foo();
     return 0;
 }
