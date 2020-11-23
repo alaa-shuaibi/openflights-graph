@@ -2,7 +2,6 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
-#include "practice.h"
 
 void foo() {
 }
