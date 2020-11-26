@@ -22,6 +22,4 @@ class Algorithms {
         int size_; // size of array storing the flights available and the coordinates array
         double longitude; // current location longitude
         double lattitude; // current location lattitude
-
-
 };
