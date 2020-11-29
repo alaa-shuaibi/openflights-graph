@@ -1,0 +1,27 @@
+//This needs to be merged into Progress.pdf after
+
+Today Chidambara, Praneeth, and I met briefly to discuss the project
+on our weekly Zoom call at 6pm CST on Saturdays.
+
+All members have committed multiple files to our repository since our previous meeting
+where we got acquainted with Git commands and working together on files as well as loading
+the dataset into our repository.
+
+All members reviewed Graphs lecture context over Thanksgiving break and committed code.
+
+We decided that before allocating certain algorithms to pairs of individuals
+that we needed to discus how we will utilize the OpenFlights dataset to setup our graph.
+
+We planned to create a basic MakeFile based off of the original lab so that we can quickly
+test our code. We also have modified lab and MP code in the readFromFile.cpp
+
+Out of the airports.txt file, we will be utilizing the latitude and longitude as our core 
+data points.
+
+We'll construct a vector that takes a pair of doubles to store latitude and longitude, and later 
+will use the distance formula to generate a single double that will serve as the key.
+
+Much of the work will be done when we construct the graph. We discussed an input for latitude and longitude
+so that the user can setup the initial location which will be used to calculate distances from based on the 
+vector pairs. Wraparound cases will be managed later.
+
