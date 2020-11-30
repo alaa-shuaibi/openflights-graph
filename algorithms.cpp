@@ -8,19 +8,19 @@
 
 using namespace std;
 
-bool extractDouble(string txt){
+bool Algorithms::extractDouble(string txt){
     istringstream iss(txt);
     double d;
     return iss >> d >> ws && iss.eof();
 }
 
-bool extractInt(string txt){
+bool Algorithms::extractInt(string txt){
     istringstream iss(txt);
     int d;
     return iss >> d >> ws && iss.eof();
 }
 
-long double toRadians(const long double degree) 
+long double Algorithms::toRadians(const long double degree) 
 { 
     // cmath library in C++  
     // defines the constant 
@@ -31,7 +31,7 @@ long double toRadians(const long double degree)
     return (one_deg * degree); 
 } 
   
-long double distance(long double lat1, long double long1,  
+long double Algorithms::distance(long double lat1, long double long1,  
                      long double lat2, long double long2) 
 { 
     // Convert the latitudes  
@@ -84,28 +84,28 @@ void Algorithms::insert(const string & filename){
     myfile.close();
 }
 
-void calculateDistances(vector< pair<double, double> > coordinates_){
+void Algorithms::calculateDistances(){
      double x = (double) rand() / RAND_MAX;
     double y = (double) rand() / RAND_MAX;
-    for (int idx = 0; idx < coordinates_.size(); idx++){
-        distances.push_back(distance(x, y, coordinates_[idx].first, coordinates_[idx].second));
+    for (unsigned long idx = 0; idx < coordinates.size(); idx++){
+        distances_.push_back(distance(x, y, coordinates[idx].first, coordinates[idx].second));
     }
 }
 
-int **Algorithms::createGrid(const string & filename){
-    /*string line;
+/*int **Algorithms::createGrid(const string & filename){
+    string line;
     ifstream myfile (filename);
     if (myfile.is_open() == true){
-        while (getline(myfile, line) == true){
-            
-        }
-    }*/
+    
+    }
 
     for (int idx = 0; idx < Flights_Available.size(); idx++){
-        doub
+        
     }
+    int **arr;
+    return arr;
 }
 
 int **Algorithms::Dijkstra(){
 
-}
+}*/
