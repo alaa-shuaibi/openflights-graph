@@ -2,7 +2,7 @@
 EXENAME = finalproject
 #this matches the object files 
 #OBJS = main.o Good.o Receipt.o
-OBJS = main.o graph.o readFromFile.o 
+OBJS = main.o algorithms.o graph.o readFromFile.o
 CXX = clang++
 CXXFLAGS =  -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++
@@ -18,6 +18,9 @@ $(EXENAME) : output_msg1 $(OBJS)
 
 main.o : main.cpp graph.h readFromFile.h
 	$(CXX) $(CXXFLAGS) main.cpp
+
+algorithms.o : algorithms.cpp algorithms.h
+	$(CXX) $(CXXFLAGS) algorithms.cpp
 
 graph.o : graph.cpp graph.h
 	$(CXX) $(CXXFLAGS) graph.cpp

@@ -9,6 +9,7 @@
 using namespace std;
 
 void Algorithms::insert(const string & filename){
+    /*
     string line;
     ifstream myfile (filename);
     if (myfile.is_open() == true){
@@ -17,9 +18,12 @@ void Algorithms::insert(const string & filename){
         }
     }
     size_ = Flights_Available.size();
+    */
 }
 
 int **Algorithms::createGrid(const string & filename){
+    int** ret;
+    return ret;
     /*string line;
     ifstream myfile (filename);
     if (myfile.is_open() == true){
@@ -29,7 +33,7 @@ int **Algorithms::createGrid(const string & filename){
     }*/
 
     for (int idx = 0; idx < Flights_Available.size(); idx++){
-        doub
+        //doub
     }
 }
 
