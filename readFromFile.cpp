@@ -1,10 +1,6 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <cstdlib>
-#include <string>
+#include "readFromFile.h"
 #include <vector>
-
+#include <string>
 /** 
  * Reads a file into a string
  * @param filename The file to read from 
