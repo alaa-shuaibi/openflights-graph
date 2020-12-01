@@ -9,6 +9,7 @@
 #include <typeinfo>
 #include <utility>
 #include <math.h>
+
 using namespace std;
 
 class Algorithms {

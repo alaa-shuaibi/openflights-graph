@@ -28,6 +28,8 @@ graph.o : graph.cpp graph.h
 readFromFile.o : readFromFile.cpp readFromFile.h
 	$(CXX) $(CXXFLAGS) readFromFile.cpp
 
+clean:
+	-rm -f *.o $(EXENAME) test
 
 # Custom Clang version enforcement Makefile rule:
 ccred=$(shell echo -e "\033[0;31m")
