@@ -6,6 +6,9 @@
 #include <string>
 #include <vector>
 
+/**
+ * Represents a collection of functions to read files.
+ */
 class readFromFile{
     public:
         /** 

@@ -1,10 +1,5 @@
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <sstream>
-#include <string>
-#include <cstdlib>
+#include "graph.h"
 #include <stdlib.h>
 #include <typeinfo>
 #include <utility>
@@ -12,6 +7,9 @@
 
 using namespace std;
 
+/**
+ * Represents a collection of algorithms to run on a graph.
+ */
 class Algorithms {
 
     public:
