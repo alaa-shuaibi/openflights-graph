@@ -43,25 +43,105 @@ long double Algorithms::distance(long double lat1, long double long1,
   
     return ans; 
 } 
+int Algorithms::getIndex(string line) 
+{ 
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    return stoi(data[0]);
+} 
+
+string Algorithms::airport_name(string line) 
+{ 
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    return (data[1];
+
+} 
+
+string Algorithms::airport_city(string line) 
+{ 
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    return data[2];
+
+} 
+string Algorithms::airport_country(string line) 
+{ 
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    return data[3];
+
+} 
+
+long double Algorithms::airport_latitude(string line) 
+{ 
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    double ans;
+    stringstream(data[6]) >> ans;
+    return ans;
+
+} 
+long double Algorithms::airport_longitude(string line) 
+{ 
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    double ans;
+    stringstream(data[7]) >> ans;
+    return ans;
+
+} 
+
 
 void Algorithms::insert(const string & filename){
     string txt;
     ifstream myfile(filename);
-    int c = 1;
-    string tmp;
-    while (getline (myfile, txt, ',')){
-        if (extractDouble(txt) == true && extractInt(txt) == false && c <= 2){
-            if (c == 1){
-                tmp = txt;
-            } else{
-                coordinates.push_back(make_pair(stod(tmp), stod(txt)));
-            }
-            c++;
-        }
-        if (c == 2){
-            c = 0;
-        }
-    }
+    
+    int ID;
+    string Airport_Name;
+    string city;
+    string country;
+    long double latitude;
+    long double longitude;
+    while(getLine(myfile,txt)){
+        ID = getIndex(txt);
+        Airport_Name = airport_name(txt);
+        city = airport_city(txt);
+        country = airport_country(txt);
+        latitude = airport_latitude(txt);
+        longitude = airport_longitude(txt);
+        airport_map.insert(ID,make_tuple(Airport_Name,city_,country,latitude,longitude));
+    
     myfile.close();
 }
 

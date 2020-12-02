@@ -21,10 +21,14 @@ class Algorithms {
         int **Dijkstra(); // sorts the graph based on the algorithm of Dijkstra
         bool extractDouble(string txt);
         bool extractInt(string txt);
-
-
+        int getIndex(string line);
+        string airport_name(string line);
+        string airport_city(string line);
+        string aiport_country(string line);
+        long double airport_latitude(string line);
+        long double airport_latitude(string line); 
     private:
-        vector< pair<double, double> > coordinates;
+        map<int,tuple(string,string,string,long double,long double)> airport_map;
         vector<double> distances_;
          // size of array storing the flights available and the coordinates array
 };
