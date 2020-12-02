@@ -64,7 +64,7 @@ string Algorithms::airport_name(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-    return (data[1];
+    return data[1];
 
 } 
 
