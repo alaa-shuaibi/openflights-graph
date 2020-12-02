@@ -49,11 +49,18 @@ class Graph {
          * WARNING: Doesn't check for duplicate airlines.
          */
         void insertAirline(AirportID start, AirportID end, int airlineID, bool isBidirectional);
-
+        
         /**
          * @return A vector of all airports that share an edge with the given airport.
          */
         std::vector<AirportID> getAdjacentAirports(AirportID source);
+
+        /**
+         * @return If sourceIsStart is true, returns all airports that have an edge
+         * that starts at the source. Otherwise, returns all airports that have an edge
+         * that ends at the source.
+         */
+        std::vector<AirportID> getAdjacentAirports(AirportID source, bool sourceIsStart);
 
         /**
          * @return A vector of all airports in the graph
@@ -61,7 +68,7 @@ class Graph {
         std::vector<AirportID> getAllAirports();
 
         /**
-         * @return An Edge from start to end.
+         * @return An edge from start to end.
          * If no edge exists between start and end, returns a default edge.
          */
         Edge getEdge(AirportID start, AirportID end);

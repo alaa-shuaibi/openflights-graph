@@ -62,7 +62,7 @@ void Graph::insertAirline(AirportID start, AirportID end, int airlineID, bool is
     adjacency_list[start][end] = new_edge;
 
     // Adds airline to edge in opposite direction if conditions are met.
-    if (isBidirectional && adjacency_list[end].find(start) != adjacency_list[start].end()) {
+    if (isBidirectional && adjacency_list[end].find(start) != adjacency_list[end].end()) {
         // Retrieve current edge data
         old_edge = adjacency_list[end][start];
         distance = old_edge.getDistance();
@@ -76,20 +76,61 @@ void Graph::insertAirline(AirportID start, AirportID end, int airlineID, bool is
 }
 
 std::vector<AirportID> Graph::getAdjacentAirports(AirportID source) {
-    std::vector<AirportID> ret;
-    return ret;
+    std::vector<AirportID> adjAirports;
+    
+    if (adjacency_list.find(source) == adjacency_list.end()) {
+        return adjAirports;
+    }
+
+    for (auto it : adjacency_list[source]) {
+        adjAirports.push_back(it.first);
+    }
+
+    return adjAirports;
+}
+
+std::vector<AirportID> Graph::getAdjacentAirports(AirportID source, bool sourceIsStart) {
+    std::vector<AirportID> adjAirports;
+
+    if (adjacency_list.find(source) == adjacency_list.end()) {
+        return adjAirports;
+    }
+
+    if (sourceIsStart) {
+        for (auto it : adjacency_list[source]) {
+            adjAirports.push_back(it.first);
+        }
+    } else {
+        for (size_t i = 0; i < airports.size(); i++) {
+            if (adjacency_list[i].find(source) != adjacency_list[i].end()) {
+                adjAirports.push_back(i);
+            }
+        }
+    }
+
+    return adjAirports;
 }
 
 std::vector<AirportID> Graph::getAllAirports() {
-    std::vector<AirportID> ret;
-    return ret;
+    return airports;
 }
 
 Edge Graph::getEdge(AirportID start, AirportID end) {
+    if (adjacency_list[start].find(end) != adjacency_list[start].end()) {
+        return adjacency_list[start][end];
+    }
+
     return Edge();
 }
 
 std::vector<Edge> Graph::getAllEdges() {
-    std::vector<Edge> ret;
-    return ret;
+    std::vector<Edge> edges;
+
+    for (size_t i = 0; i < airports.size(); i++) {
+        for (auto it : adjacency_list[i]) {
+            edges.push_back(it.second);
+        }
+    }
+
+    return edges;
 }
