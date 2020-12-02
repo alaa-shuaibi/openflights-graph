@@ -13,6 +13,27 @@ class OpenFlights {
         OpenFlights();
 
         /**
+         * Given a starting airport, returns the nearest airport
+         * that can be traveled to to arrive at the given city.
+         * 
+         * If no such airport is found, return -1.
+         */
+        int cityFinder(AirportID start, std::string country);
+
+        /**
+         * Given a starting airport, returns the nearest airport
+         * that can be traveled to to arrive at the given country.
+         * 
+         * If no such airport is found, return -1.
+         */
+        int countryFinder(AirportID start, std::string country);
+
+        /**
+         * @return The number of airports this airport can travel to and from.
+         */
+        size_t airportNetworkSize(AirportID airport);
+
+        /**
          * Stores data for a specific airport.
          */
         struct AirportData {
