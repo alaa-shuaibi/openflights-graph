@@ -51,13 +51,34 @@ class Graph {
         void insertAirline(AirportID start, AirportID end, int airlineID, bool isBidirectional);
 
         /**
-         * A vector of Airports.
+         * @return A vector of all airports that share an edge with the given airport.
          */
-        std::vector<AirportID> airports;
+        std::vector<AirportID> getAdjacentAirports(AirportID source);
+
+        /**
+         * @return A vector of all airports in the graph
+         */
+        std::vector<AirportID> getAllAirports();
+
+        /**
+         * @return An Edge from start to end.
+         * If no edge exists between start and end, returns a default edge.
+         */
+        Edge getEdge(AirportID start, AirportID end);
+
+        /**
+         * @return A vector of all edges in the graph.
+         */
+        std::vector<Edge> getAllEdges();
 
     private:
         /**
          * Adjaceny List for graph.
          */
         std::unordered_map<AirportID, std::unordered_map<AirportID, Edge>> adjacency_list;
+
+        /**
+         * A vector of Airports.
+         */
+        std::vector<AirportID> airports;
 };

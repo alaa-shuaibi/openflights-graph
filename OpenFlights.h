@@ -29,7 +29,7 @@ class OpenFlights {
         int countryFinder(AirportID start, std::string country);
 
         /**
-         * @return The number of airports this airport can travel to and from.
+         * @return The number of airports the given airport can travel to and from.
          */
         size_t airportNetworkSize(AirportID airport);
 

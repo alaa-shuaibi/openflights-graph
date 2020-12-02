@@ -71,3 +71,22 @@ void Graph::insertAirline(AirportID start, AirportID end, int airlineID, bool is
         adjacency_list[end][start] = new_edge;
     }
 }
+
+std::vector<AirportID> Graph::getAdjacentAirports(AirportID source) {
+    std::vector<AirportID> ret;
+    return ret;
+}
+
+std::vector<AirportID> Graph::getAllAirports() {
+    std::vector<AirportID> ret;
+    return ret;
+}
+
+Edge Graph::getEdge(AirportID start, AirportID end) {
+    return Edge();
+}
+
+std::vector<Edge> Graph::getAllEdges() {
+    std::vector<Edge> ret;
+    return ret;
+}

@@ -2,7 +2,9 @@
 #include <algorithm>
 
 Edge::Edge() {
-    // Does nothing.
+    start = -1;
+    end = -1;
+    distance = 0;
 }
 
 Edge::Edge(AirportID start, AirportID end, long double distance) {
