@@ -27,9 +27,15 @@ AirportID Edge::getEnd() {
     return end;
 }
 
+/**
+ * This function returns, using the distance formula the distance 
+ * between the  airports (derived from longitude and latitude)
+ * @return type double 
+ * */
 long double Edge::getDistance() {
     return distance;
 }
+
 
 std::vector<int> Edge::getAirlines() {
     return airlines;
