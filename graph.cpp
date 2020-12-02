@@ -9,7 +9,10 @@ Graph::Graph(std::vector<AirportID> airports) {
 }
 
 void Graph::insertAirport(AirportID airport) {
-    airports.push_back(airport);
+    if (adjacency_list.find(airport) == adjacency_list.end()) {
+        airports.push_back(airport);
+        adjacency_list[airport] = std::unordered_map<AirportID, Edge>();
+    }
 }
 
 void Graph::insertEdge(AirportID start, AirportID end, long double distance) {
