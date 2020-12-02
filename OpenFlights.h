@@ -1,7 +1,6 @@
 #pragma once
 #include "traversal.h"
 #include "algorithms.h"
-#include <tuple>
 
 /**
  * Represents a series of functions to run on the OpenFlights dataset.
