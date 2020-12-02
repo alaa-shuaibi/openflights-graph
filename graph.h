@@ -1,12 +1,11 @@
 #pragma once
 #include "edge.h"
+#include <unordered_map>
 
 /**
  * Represents a directed graph used to load the OpenFlights dataset.
  * 
- * A vertex is a tuple that represents an airport.
- * vertex.first is the AirportID, vertex.second are the coordinates,
- * and vertex.third is a string containing the city and the country.
+ * A vertex stores a single int that represents the ID of an airport.
  * 
  * An edge between two vertices indicates one can travel from
  * the starting airport to the destination airport.
@@ -24,26 +23,41 @@ class Graph {
         /**
          * Creates a graph with the given airports.
          */
-        Graph(std::vector<Airport> airports);
+        Graph(std::vector<AirportID> airports);
 
         /**
-         * Inserts a new airport.
+         * Inserts a new airport into the graph.
          */
-        void insertAirport(Airport airport);
+        void insertAirport(AirportID airport);
 
         /**
          * Inserts an edge from start to end with the given distance.
          */
-        void insertEdge(Airport start, Airport end, long double distance);
+        void insertEdge(AirportID start, AirportID end, long double distance);
         
         /**
          * Inserts an edge from start to end with the given distance and vector of airlines.
          */
-        void insertEdge(Airport start, Airport end, long double distance, std::vector<int> airlines);
+        void insertEdge(AirportID start, AirportID end, long double distance, std::vector<int> airlines);
 
-    private:
+        /**
+         * Inserts an airline into the edge from start to end (if the edge exists).
+         * 
+         * If isBidirectional is true and there exists an edge from end to start,
+         * then the airline will also be added to the edge from end to start.
+         * 
+         * WARNING: Doesn't check for duplicate airlines.
+         */
+        void insertAirline(AirportID start, AirportID end, int airlineID, bool isBidirectional);
+
         /**
          * A vector of Airports.
          */
-        std::vector<Airport> airports;
+        std::vector<AirportID> airports;
+
+    private:
+        /**
+         * Adjaceny List for graph.
+         */
+        std::unordered_map<AirportID, std::unordered_map<AirportID, Edge>> adjacency_list;
 };

@@ -1,28 +1,59 @@
 #pragma once
 #include "miscellanies.h"
-#include <tuple>
+#include <map>
 
-typedef std::pair<long double, long double> Coords;
-typedef std::tuple<int, Coords, std::string> Airport;
+typedef int AirportID;
 
 /**
 * Represents an Edge between a starting airport and ending airport.
 */
 class Edge {
     public:
-        Edge(Airport start, Airport end, long double distance);
+        /**
+         * Creates a default edge.
+         */
+        Edge();
 
-        Edge(Airport start, Airport end, long double distance, std::vector<int> airlines);
+        /**
+         * Creates an edge from start to end with the given distance.
+         */
+        Edge(AirportID start, AirportID end, long double distance);
 
+        /**
+         * Creates an edge from start to end with the given distance and vector of airlines.
+         */
+        Edge(AirportID start, AirportID end, long double distance, std::vector<int> airlines);
+
+        /**
+         * @return Starting AirportID
+         */
+        AirportID getStart();
+
+        /**
+         * @return Ending AirportID
+         */
+        AirportID getEnd();
+
+        /**
+         * @return Distance between two airports
+         */
+        long double getDistance();
+
+        /**
+         * @return Vector of airlines that travel from start to end
+         */
+        std::vector<int> getAirlines();
+
+    private:
         /**
         * The starting airport.
         */
-        Airport start;
+        AirportID start;
 
         /**
-        * The destination airport.
+        * The ending airport.
         */
-        Airport end;
+        AirportID end;
 
         /**
         * The distance between start and end.
@@ -33,6 +64,4 @@ class Edge {
         * A list of airlines that travel from start to end.
         */
         std::vector<int> airlines;
-
-    private:                
 };

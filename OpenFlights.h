@@ -1,18 +1,29 @@
 #pragma once
 #include "traversal.h"
 #include "algorithms.h"
+#include <tuple>
+
+typedef long double Coords;
+typedef std::tuple<std::string, std::string, Coords> airport_details;
 
 /**
  * Represents a series of functions to run on the OpenFlights dataset.
  */
 class OpenFlights {
     public:
+        /**
+        * Defualt Constructor.
+        */ 
         OpenFlights();
 
     private:
         /**
-         * A vector of Airports.
-         * The index of an Airport represents the OpenFlights ID of that airport.
+         * Maps an AirportID to the details of that airport.
          */
-        const std::vector<Airport> airports;
+        std::map<AirportID, airport_details> airportData;
+
+        /**
+         * A graph to load the dataset.
+         */
+        Graph g;
 };
