@@ -75,6 +75,13 @@ void Graph::insertAirline(AirportID start, AirportID end, int airlineID, bool is
         distance = old_edge.getDistance();
         airlines = old_edge.getAirlines();
 
+        // Checks if airline is already in edge.
+        for (size_t i = 0; i < airlines.size(); i++) {
+            if (airlines[i] == airlineID) {
+                return;
+            }
+        }
+
         // Replace current edge with new edge
         airlines.push_back(airlineID);
         new_edge = Edge(start, end, distance, airlines);
