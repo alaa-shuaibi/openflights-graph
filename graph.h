@@ -12,6 +12,7 @@
  * Each edge contains the distance between the two airports as well
  * as a vector of airlines that travel between those two airports in
  * the direction of the edge.
+ * 
  */
 class Graph {
     public:
@@ -45,8 +46,6 @@ class Graph {
          * 
          * If isBidirectional is true and there exists an edge from end to start,
          * then the airline will also be added to the edge from end to start.
-         * 
-         * WARNING: Doesn't check for duplicate airlines.
          */
         void insertAirline(AirportID start, AirportID end, int airlineID, bool isBidirectional);
         

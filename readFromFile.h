@@ -8,8 +8,9 @@
 
 /**
  * Represents a collection of functions to read files.
+ * @author CS 225 Staff
  */
-class readFromFile{
+class readFromFile {
     public:
         /** 
         * Reads a file into a string

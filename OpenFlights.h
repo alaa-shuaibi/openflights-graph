@@ -1,4 +1,5 @@
 #pragma once
+#include "miscellanies.h"
 #include "traversal.h"
 #include "algorithms.h"
 
@@ -9,8 +10,13 @@ class OpenFlights {
     public:
         /**
         * Defualt Constructor.
-        */ 
+        */
         OpenFlights();
+
+        /**
+         * Loads data into airportMap and graph;
+         */
+        void loadData(const string & filename);
 
         /**
          * Given a starting airport, returns the nearest airport
@@ -18,7 +24,7 @@ class OpenFlights {
          * 
          * If no such airport is found, return -1.
          */
-        int cityFinder(AirportID start, std::string country);
+        int cityFinder(AirportID start, string country);
 
         /**
          * Given a starting airport, returns the nearest airport
@@ -26,7 +32,7 @@ class OpenFlights {
          * 
          * If no such airport is found, return -1.
          */
-        int countryFinder(AirportID start, std::string country);
+        int countryFinder(AirportID start, string country);
 
         /**
          * @return The number of airports the given airport can travel to and from.
@@ -37,10 +43,11 @@ class OpenFlights {
          * Stores data for a specific airport.
          */
         struct AirportData {
-            std::string name;
-            std::string city;
-            std::string country;
-            std::pair<long double, long double> coords;
+            string name;
+            string city;
+            string country;
+            long double latitude;
+            long double longitude;
         };
         
 
@@ -51,7 +58,7 @@ class OpenFlights {
         std::map<AirportID, AirportData> airportMap;
 
         /**
-         * A graph to load the dataset.
+         * A graph to load the aiports in.
          */
-        Graph g;
+        Graph graph;
 };
