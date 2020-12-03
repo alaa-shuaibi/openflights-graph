@@ -41,6 +41,7 @@ long double Miscellanies::distance(long double lat1, long double long1,
     return ans; 
 }
 
+// The below functions are for airports.txt
 int Miscellanies::getIndex(string line) 
 { 
     vector<string> data;
@@ -116,6 +117,96 @@ long double Miscellanies::airport_longitude(string line)
     stringstream(data[7]) >> ans;
     return ans;
 } 
+
+// The below helper functions are for working with airlines.txt
+
+int Miscellanies::AirlineIdentifier(string line){
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+
+    
+    return stoi(data[0]);
+}
+
+string Miscellanies::AirlineName(string line){
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    return data[1];
+}
+
+string Miscellanies::AirlineCountry(string line){
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+    return data[6];
+}
+
+// Functions below are helpers for working with routes.txt
+int Miscellanies::getAirlineID(string line){
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+
+    return stoi(data[1]);
+}
+
+int Miscellanies::sourceAirportID(string line){
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+
+    
+    return stoi(data[3]);
+}
+
+int Miscellanies::destAirportID(string line){
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+
+    
+    return stoi(data[5]);
+}
+
+int Miscellanies::numStops(string line){
+    vector<string> data;
+    stringstream ss(line);
+    while(ss.good()){
+        string substring;
+        getline(ss,substring,',');
+        data.push_back(substring);
+    }
+
+    
+    return stoi(data[7]);
+}
+
 
 // Might not need this anymore since we're using a struct in OpenFlights
 /*void Miscellanies::insert(const string & filename){

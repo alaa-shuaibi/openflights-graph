@@ -24,12 +24,25 @@ class Miscellanies {
         int **createGrid(const string & filename); // creates a graph of locations
         bool extractDouble(string txt);
         bool extractInt(string txt);
+
+        // below functions are helpers for working with airports.txt
         int getIndex(string line);
         string airport_name(string line);
         string airport_city(string line);
         string airport_country(string line);
         long double airport_latitude(string line);
         long double airport_longitude(string line);
+
+        //below functions are helpers for working with routes.txt
+        int getAirlineID(string line);
+        int sourceAirportID(string line);
+        int destAirportID(string line);
+        int numStops(string line);
+
+        //below functions are helpers for working with airlines.txt
+        int AirlineIdentifier(string line);
+        string AirlineName(string line);
+        string AirlineCountry(string line);
 
     private:
         vector<double> distances_;
