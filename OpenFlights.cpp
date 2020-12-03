@@ -33,7 +33,7 @@ void OpenFlights::loadEdges(bool includeAirlines){
     if (includeAirlines == true){
         std::map<AirportID, AirportData> iter;
         for (iter = airportMap.begin(); iter != airportMap.end(); ++iter){
-            graph.insertEdge()
+            graph.insertEdge();
         }
     }else{
         graph.insertEdge()

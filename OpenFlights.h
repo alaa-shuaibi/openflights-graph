@@ -60,6 +60,17 @@ class OpenFlights {
             long double latitude;
             long double longitude;
         };
+
+        struct Airline {
+            string Airline_name;
+            string Airline_country;
+        }
+
+        struct Route {
+            long int AirlineID;
+            long int ending_AirportID;
+            long int num_stops;
+        };
         
 
     private:
@@ -67,6 +78,10 @@ class OpenFlights {
          * Maps an AirportID to the details of that airport.
          */
         std::map<AirportID, AirportData> airportMap;
+
+        std::map<AirportID, Route> routes_;
+
+        std::map<AirportID, Airline> airlines_;
 
         /**
          * A graph to load the aiports in.
