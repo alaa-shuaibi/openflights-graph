@@ -7,7 +7,7 @@
 #include <vector>
 
 /**
- * Represents a collection of functions to read files.
+ * Represents a collection of functions to read files. 
  * @author CS 225 Staff
  */
 class readFromFile {

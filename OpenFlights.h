@@ -14,21 +14,32 @@ class OpenFlights {
         OpenFlights();
 
         /**
+        * Constructor that also loads in the data by calling loadData.
+        */
+        OpenFlights(const string & filename);
+
+        /**
          * Loads data into airportMap and graph;
          */
         void loadData(const string & filename);
 
         /**
-         * Given a starting airport, returns the nearest airport
-         * that can be traveled to to arrive at the given city.
+         * Loads edges into graph. 
+         * If includeAirlines is true, airlines will also be loaded into edges.
+         */
+        void loadEdges(bool includeAirlines);
+
+        /**
+         * Given a starting airport, returns the nearest airport 
+         * that can be traveled to to arrive at the given city. 
          * 
          * If no such airport is found, return -1.
          */
         int cityFinder(AirportID start, string country);
 
         /**
-         * Given a starting airport, returns the nearest airport
-         * that can be traveled to to arrive at the given country.
+         * Given a starting airport, returns the nearest airport 
+         * that can be traveled to to arrive at the given country. 
          * 
          * If no such airport is found, return -1.
          */

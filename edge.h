@@ -5,8 +5,10 @@
 typedef int AirportID;
 
 /**
-* Represents an Edge between a starting airport and ending airport.
-*/
+ * Represents an Edge between a starting airport and ending airport. 
+ * 
+ * @note Much of this class is based off of lab_ml.
+ */
 class Edge {
     public:
         /**

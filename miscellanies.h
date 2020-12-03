@@ -12,7 +12,7 @@ using std::istringstream;
 using std::ws;
 
 /**
- * Represents a collection of miscellaneous functions that will be used
+ * Represents a collection of miscellaneous functions that will be used 
  * for our final project.
  */
 class Miscellanies {

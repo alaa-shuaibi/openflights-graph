@@ -3,16 +3,17 @@
 #include <unordered_map>
 
 /**
- * Represents a directed graph used to load the OpenFlights dataset.
+ * Represents a directed graph used to load the OpenFlights dataset. 
  * 
- * A vertex stores a single int that represents the ID of an airport.
+ * A vertex stores a single int that represents the ID of an airport. 
  * 
- * An edge between two vertices indicates one can travel from
- * the starting airport to the destination airport.
- * Each edge contains the distance between the two airports as well
- * as a vector of airlines that travel between those two airports in
- * the direction of the edge.
+ * An edge between two vertices indicates one can travel from 
+ * the starting airport to the destination airport. 
+ * Each edge contains the distance between the two airports as well 
+ * as a vector of airlines that travel between those two airports in 
+ * the direction of the edge. 
  * 
+ * @note Much of this class is based off of lab_ml.
  */
 class Graph {
     public:
