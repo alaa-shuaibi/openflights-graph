@@ -19,26 +19,22 @@ long double Miscellanies::toRadians(const long double degree)
     return (one_deg * degree); 
 } 
   
-long double Miscellanies::distance(long double lat1, long double long1,  
-                     long double lat2, long double long2) 
+long double Miscellanies::distance(long double latitude0, long double longitude0,  
+                     long double latitude1, long double longitude1) 
 {
-    lat1 = toRadians(lat1); 
-    long1 = toRadians(long1); 
-    lat2 = toRadians(lat2); 
-    long2 = toRadians(long2); 
+    latitude0 = toRadians(latitude0); 
+    longitude0 = toRadians(longitude0); 
+    latitude1 = toRadians(latitude1); 
+    longitude1 = toRadians(longitude1); 
       
   
-    long double ans = pow(sin((lat2 - lat1) / 2), 2) +  
-                          cos(lat1) * cos(lat2) *  
-                          pow(sin((long2 - long1) / 2), 2); 
+    long double ans = pow(sin((latitude1 - latitude0) / 2), 2) +  cos(latitude0) * cos(latitude1) *  pow(sin((longitude1 - longitude0) / 2), 2); 
   
     ans = 2 * atan2(sqrt(ans), sqrt(1 - ans)); 
   
     long double R = 6371; 
-      
-    ans = ans * R; 
   
-    return ans; 
+    return (ans * R); 
 }
 
 // The below functions are for airports.txt
