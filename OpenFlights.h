@@ -23,6 +23,10 @@ class OpenFlights {
          */
         void loadData(const string & filename);
 
+        void loadRoutes(const string & filename);
+
+        void loadAirlines(const string & filename);
+
         /**
          * Loads edges into graph. 
          * If includeAirlines is true, airlines will also be loaded into edges.
@@ -35,7 +39,7 @@ class OpenFlights {
          * 
          * If no such airport is found, return -1.
          */
-        int cityFinder(AirportID start, string country);
+        int cityFinder(AirportID start, string city);
 
         /**
          * Given a starting airport, returns the nearest airport 
@@ -64,12 +68,13 @@ class OpenFlights {
         struct Airline {
             string Airline_name;
             string Airline_country;
-        }
+        };
 
         struct Route {
             long int AirlineID;
             long int ending_AirportID;
             long int num_stops;
+            long double distance;
         };
         
 
