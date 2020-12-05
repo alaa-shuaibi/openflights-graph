@@ -74,7 +74,7 @@ void OpenFlights::loadEdges(bool includeAirlines){
             vector<int> airlineIDs;
 
             for (iter2 = ++iter; iter2 != airportMap.end(); ++iter2){
-                if (iter.second.)
+                
             }
         }
     }else{
@@ -83,6 +83,26 @@ void OpenFlights::loadEdges(bool includeAirlines){
             graph.insertEdge(iter.first, iter.second.ending_AirportID, iter.second.distance);
         }
     }
+}
+
+int OpenFlights::cityFinder(AirportID start, string city){
+    std::map<AirportID, Route> iter;
+    for (iter = routes_.begin(); iter != routes_.end(); ++iter){
+        if (iter.first == start && city == airportMap[iter.second.ending_AirportID].city){
+            return iter.second.ending_AirportID;
+        }
+    }
+    return -1;
+}
+
+int OpenFlights::countryFinder(AirportID start, string country){
+     std::map<AirportID, Route> iter;
+    for (iter = routes_.begin(); iter != routes_.end(); ++iter){
+        if (iter.first == start && country == airportMap[iter.second.ending_AirportID].country){
+            return iter.second.ending_AirportID;
+        }
+    }
+    return -1;
 }
 
 OpenFlights::OpenFlights(const string & filename) {
