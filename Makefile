@@ -2,7 +2,7 @@
 EXENAME = finalproject
 #this matches the object files 
 #OBJS = main.o Good.o Receipt.o
-OBJS = main.o algorithms.o graph.o readFromFile.o
+OBJS = main.o OpenFlights.o algorithms.o traversal.o graph.o edge.o miscellanies.o readFromFile.o
 CXX = clang++
 CXXFLAGS =  -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++
@@ -16,17 +16,32 @@ output_msg1: ; $(CLANG_VERSION_MSG)
 $(EXENAME) : output_msg1 $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o : main.cpp graph.h readFromFile.h
+main.o : main.cpp OpenFlights.h
 	$(CXX) $(CXXFLAGS) main.cpp
+
+OpenFlights.o : OpenFlights.cpp OpenFlights.h
+	$(CXX) $(CXXFLAGS) OpenFlights.cpp
 
 algorithms.o : algorithms.cpp algorithms.h
 	$(CXX) $(CXXFLAGS) algorithms.cpp
 
+traversal.o : traversal.cpp traversal.h
+	$(CXX) $(CXXFLAGS) traversal.cpp
+
 graph.o : graph.cpp graph.h
 	$(CXX) $(CXXFLAGS) graph.cpp
 
+edge.o : edge.cpp edge.h
+	$(CXX) $(CXXFLAGS) edge.cpp
+
+miscellanies.o : miscellanies.cpp miscellanies.h
+	$(CXX) $(CXXFLAGS) miscellanies.cpp
+
 readFromFile.o : readFromFile.cpp readFromFile.h
 	$(CXX) $(CXXFLAGS) readFromFile.cpp
+
+test: output_msg tests/catch/catchmain.cpp tests/test_OpenFlights.cpp tests/test_graph.cpp
+	$(LD) tests/catch/catchmain.cpp tests/test_OpenFlights.cpp tests/test_graph.cpp $(LDFLAGS) -o test
 
 clean:
 	-rm -f *.o $(EXENAME) test

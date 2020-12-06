@@ -1,3 +1,5 @@
 #include "algorithms.h"
 
-int **Algorithms::Dijkstra() {}
+int **Algorithms::Dijkstra() {
+    return 0;
+}

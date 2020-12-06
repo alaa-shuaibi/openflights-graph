@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
+#include <iterator>
 
 /**
  * Represents a collection of functions to read files. 
