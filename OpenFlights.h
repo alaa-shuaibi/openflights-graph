@@ -64,7 +64,7 @@ class OpenFlights {
         struct Airline {
             string Airline_name;
             string Airline_country;
-        }
+        };
 
         struct Route {
             long int AirlineID;
