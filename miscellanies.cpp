@@ -1,18 +1,19 @@
 #include "miscellanies.h"
 
-bool Miscellanies::extractDouble(string txt){
+
+ bool Miscellanies::extractDouble(string txt){
     istringstream iss(txt);
     double d;
     return iss >> d >> ws && iss.eof();
 }
 
-bool Miscellanies::extractInt(string txt){
+ bool Miscellanies::extractInt(string txt){
     istringstream iss(txt);
     int d;
     return iss >> d >> ws && iss.eof();
 }
 
-long double Miscellanies::toRadians(const long double degree) 
+ long double Miscellanies::toRadians(const long double degree) 
 { 
     double pi = 2 * acos(0);
     long double one_deg = (pi) / 180; 
@@ -50,7 +51,7 @@ int Miscellanies::getIndex(string line)
     return stoi(data[0]);
 } 
 
-string Miscellanies::airport_name(string line) 
+ string Miscellanies::airport_name(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -62,7 +63,7 @@ string Miscellanies::airport_name(string line)
     return data[1];
 } 
 
-string Miscellanies::airport_city(string line) 
+ string Miscellanies::airport_city(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -74,7 +75,7 @@ string Miscellanies::airport_city(string line)
     return data[2];
 }
 
-string Miscellanies::airport_country(string line) 
+ string Miscellanies::airport_country(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -86,7 +87,7 @@ string Miscellanies::airport_country(string line)
     return data[3];
 } 
 
-long double Miscellanies::airport_latitude(string line) 
+ long double Miscellanies::airport_latitude(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -100,7 +101,7 @@ long double Miscellanies::airport_latitude(string line)
     return ans;
 }
 
-long double Miscellanies::airport_longitude(string line) 
+ long double Miscellanies::airport_longitude(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -116,7 +117,7 @@ long double Miscellanies::airport_longitude(string line)
 
 // The below helper functions are for working with airlines.txt
 
-int Miscellanies::AirlineIdentifier(string line){
+ int Miscellanies::AirlineIdentifier(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -129,7 +130,7 @@ int Miscellanies::AirlineIdentifier(string line){
     return stoi(data[0]);
 }
 
-string Miscellanies::AirlineName(string line){
+ string Miscellanies::AirlineName(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -140,7 +141,7 @@ string Miscellanies::AirlineName(string line){
     return data[1];
 }
 
-string Miscellanies::AirlineCountry(string line){
+ string Miscellanies::AirlineCountry(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -152,7 +153,7 @@ string Miscellanies::AirlineCountry(string line){
 }
 
 // Functions below are helpers for working with routes.txt
-int Miscellanies::getAirlineID(string line){
+ int Miscellanies::getAirlineID(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -164,7 +165,7 @@ int Miscellanies::getAirlineID(string line){
     return stoi(data[1]);
 }
 
-int Miscellanies::sourceAirportID(string line){
+ int Miscellanies::sourceAirportID(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -177,7 +178,7 @@ int Miscellanies::sourceAirportID(string line){
     return stoi(data[3]);
 }
 
-int Miscellanies::destAirportID(string line){
+ int Miscellanies::destAirportID(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -190,7 +191,7 @@ int Miscellanies::destAirportID(string line){
     return stoi(data[5]);
 }
 
-int Miscellanies::numStops(string line){
+ int Miscellanies::numStops(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){

@@ -1,4 +1,7 @@
 #include "OpenFlights.h"
+#include "miscellanies.h"
+
+using namespace std;
 
 OpenFlights::OpenFlights() {
     // Does nothing yet for now.
@@ -7,20 +10,19 @@ OpenFlights::OpenFlights() {
 void OpenFlights::loadData(const string & filename){
     string txt;
     ifstream myfile(filename);
-    
     int ID;
     string Airport_Name;
     string city;
     string country;
     long double latitude;
     long double longitude;
-    while(getLine(myfile,txt)){
-        ID = getIndex(txt);
-        Airport_Name = airport_name(txt);
-        city = airport_city(txt);
-        country = airport_country(txt);
-        latitude = airport_latitude(txt);
-        longitude = airport_longitude(txt);
+    while(getline(myfile,txt)){
+        ID = Miscellanies::getIndex(txt);
+        Airport_Name = Miscellanies::airport_name(txt);
+        city = Miscellanies::airport_city(txt);
+        country = Miscellanies::airport_country(txt);
+        latitude = Miscellanies::airport_latitude(txt);
+        longitude = Miscellanies::airport_longitude(txt);
         AirportData point = {Airport_Name, city, country, latitude, longitude};
         airportMap.insert({ID, point});
         
@@ -36,11 +38,11 @@ void OpenFlights::loadAirlines(const string & filename){
     int ID;
     string airlineName;
     string country;
-    while (getLine(myfile, txt)){
-        ID = AirlineIdentifier(txt);
-        airlineName = AirlineName(txt);
-        country = AirlineCountry(txt);
-        Airline point = {ID, airlineName, country};
+    while (getline(myfile, txt)){
+        ID = Miscellanies::AirlineIdentifier(txt);
+        airlineName = Miscellanies::AirlineName(txt);
+        country = Miscellanies::AirlineCountry(txt);
+        Airline point = {airlineName, country};
         airlines_.insert({ID, point});
     }
 }
@@ -48,18 +50,17 @@ void OpenFlights::loadAirlines(const string & filename){
 void OpenFlights::loadRoutes(const string & filename){
     string txt;
     ifstream myfile(filename);
-
     int starting_ID;
     long int AirlineID;
     long int ending_AirportID;
     long int num_stops;
     long double distance_;
-    while(getLine(myfile,txt)){
-        starting_ID = sourceAirportID(txt);
-        AirlineID = getAirlineID(txt);
-        ending_AirportID = destAirportID(txt);
-        num_stops = numstops(txt);
-        distance_ = distance(airportMap[starting_ID].second.latitude, airportMap[starting_ID].second.longitude, airportMap[ending_AirportID].second.latitude, airportMap[ending_AirportID].second.longitude);
+    while(getline(myfile,txt)){
+        starting_ID = Miscellanies::sourceAirportID(txt);
+        AirlineID = Miscellanies::getAirlineID(txt);
+        ending_AirportID = Miscellanies::destAirportID(txt);
+        num_stops = Miscellanies::numStops(txt);
+        distance_ = Miscellanies::distance(airportMap[starting_ID].latitude, airportMap[starting_ID].longitude, airportMap[ending_AirportID].latitude, airportMap[ending_AirportID].longitude);
         Route point = {AirlineID, ending_AirportID, num_stops, distance_};
         routes_.insert({starting_ID, point});
     }
@@ -69,40 +70,43 @@ void OpenFlights::loadRoutes(const string & filename){
 
 void OpenFlights::loadEdges(bool includeAirlines){
     if (includeAirlines == true){
-        std::map<AirportID, Route> iter;
-        for (iter = airportMap.begin(); iter != airportMap.end(); ++iter){
+        for (auto elem: routes_){
             vector<int> airlineIDs;
-
-            for (iter2 = ++iter; iter2 != airportMap.end(); ++iter2){
-                
-            }
+            graph.insertEdge(elem.first, elem.second.ending_AirportID, elem.second.distance);
         }
     }else{
-        std::map<AirportID, Route> iter;
-        for (iter = airportMap.begin(); iter != airportMap.end(); ++iter){
-            graph.insertEdge(iter.first, iter.second.ending_AirportID, iter.second.distance);
+        for (auto elem: routes_){
+            graph.insertEdge(elem.first, elem.second.ending_AirportID, elem.second.distance);
         }
     }
 }
 
 int OpenFlights::cityFinder(AirportID start, string city){
-    std::map<AirportID, Route> iter;
-    for (iter = routes_.begin(); iter != routes_.end(); ++iter){
-        if (iter.first == start && city == airportMap[iter.second.ending_AirportID].city){
-            return iter.second.ending_AirportID;
+    for (auto elem: routes_){
+        if (city == airportMap[elem.second.ending_AirportID].city && start == elem.first){
+            return elem.second.ending_AirportID;
         }
     }
     return -1;
 }
 
 int OpenFlights::countryFinder(AirportID start, string country){
-     std::map<AirportID, Route> iter;
-    for (iter = routes_.begin(); iter != routes_.end(); ++iter){
-        if (iter.first == start && country == airportMap[iter.second.ending_AirportID].country){
-            return iter.second.ending_AirportID;
+     for (auto elem: routes_){
+        if (country == airportMap[elem.second.ending_AirportID].country && start == elem.first){
+            return elem.second.ending_AirportID;
         }
     }
     return -1;
+}
+
+size_t OpenFlights::airportNetworkSize(AirportID airport){
+    vector<AirportID> destinations;
+    for (auto elem: routes_){
+        if (elem.first == airport){
+            destinations.push_back(elem.second.ending_AirportID);
+        }
+    }
+    return destinations.size();
 }
 
 OpenFlights::OpenFlights(const string & filename) {
@@ -110,6 +114,3 @@ OpenFlights::OpenFlights(const string & filename) {
     loadRoutes(filename);
 }
 
-int OpenFlights::cityFinder(AirportID start, string country){
-
-}
