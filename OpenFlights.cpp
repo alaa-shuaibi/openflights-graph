@@ -1,7 +1,5 @@
 #include "OpenFlights.h"
-#include "miscellanies.h"
 
-using namespace std;
 
 OpenFlights::OpenFlights() {
     // Does nothing yet for now.

@@ -2,6 +2,8 @@
 #include "miscellanies.h"
 #include "algorithms.h"
 
+using std::ifstream;
+
 /**
  * Represents a series of functions to run on the OpenFlights dataset.
  */
