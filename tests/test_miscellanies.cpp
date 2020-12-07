@@ -1,7 +1,7 @@
 #include "catch/catch.hpp"
-#include "../algorithms.h"
+#include "miscellanies.h"
 
-TEST_CASE("Example 3") {
+TEST_CASE("Example 1") {
     SECTION("Check if x is equal to 3.") {
         int x = 3;
         REQUIRE(x == 3);
