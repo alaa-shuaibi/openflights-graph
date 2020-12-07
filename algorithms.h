@@ -6,7 +6,13 @@
  */
 class Algorithms {
     public:
-        double Dijkstra(int starting_Airport, int ending_Airport); // sorts the graph based on the algorithm of Dijkstra
+        void BFS();
+
+        void DFS();
+
+        double Dijkstra(int starting_Airport, int ending_Airport);
+
+        void Landmark();
 
     private:
 };
