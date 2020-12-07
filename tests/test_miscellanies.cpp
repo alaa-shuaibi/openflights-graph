@@ -1,5 +1,5 @@
 #include "catch/catch.hpp"
-#include "miscellanies.h"
+#include "../miscellanies.h"
 
 TEST_CASE("Example 1") {
     SECTION("Check if x is equal to 3.") {

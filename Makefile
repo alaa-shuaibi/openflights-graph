@@ -1,8 +1,6 @@
 # Source: Final Project Demo GitHub (with some adjustments)
 EXENAME = finalproject
-#this matches the object files 
-#OBJS = main.o Good.o Receipt.o
-OBJS = main.o algorithms.o graph.o edge.o readFromFile.o OpenFlights.o
+OBJS = main.o OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++
@@ -54,7 +52,7 @@ readFromFile.o: readFromFile.cpp readFromFile.h
 	$(CXX) $(CXXFLAGS) readFromFile.cpp
 
 testmiscellanies: output_msg tests/catch/catchmain.cpp tests/test_miscellanies.cpp
-	$(LD) tests/catch/catchmain.cpp tests/test_miscellanies.cpp $(LDFLAGS) -o test
+	$(LD) tests/catch/catchmain.cpp tests/test_miscellanies.cpp $(LDFLAGS) -o testmiscellanies
 
 testgraph: output_msg tests/catch/catchmain.cpp tests/test_graph.cpp
 	$(LD) tests/catch/catchmain.cpp tests/test_graph.cpp $(LDFLAGS) -o testgraph
@@ -62,8 +60,8 @@ testgraph: output_msg tests/catch/catchmain.cpp tests/test_graph.cpp
 testalgorithms: output_msg tests/catch/catchmain.cpp tests/test_algorithms.cpp
 	$(LD) tests/catch/catchmain.cpp tests/test_algorithms.cpp $(LDFLAGS) -o testalgorithms
 
-testopenflights: output_msg tests/catch/catchmain.cpp tests/test_openflights.cpp
-	$(LD) tests/catch/catchmain.cpp tests/test_openflights.cpp $(LDFLAGS) -o testopenflights
+testopenflights: output_msg tests/catch/catchmain.cpp tests/test_OpenFlights.cpp
+	$(LD) tests/catch/catchmain.cpp tests/test_OpenFlights.cpp $(LDFLAGS) -o testopenflights
 
 test: output_msg tests/catch/catchmain.cpp tests/test_miscellanies.cpp tests/test_graph.cpp tests/test_algorithms.cpp tests/test_OpenFlights.cpp  
 	$(LD) tests/catch/catchmain.cpp tests/test_miscellanies.cpp tests/test_graph.cpp tests/test_algorithms.cpp tests/test_OpenFlights.cpp $(LDFLAGS) -o test
