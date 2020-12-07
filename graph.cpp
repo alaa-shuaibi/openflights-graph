@@ -6,6 +6,9 @@ Graph::Graph() {
 
 Graph::Graph(std::vector<AirportID> airports) {
     this->airports = airports;
+    for (size_t i = 0; i < this->airports.size(); i++) {
+        adjacency_list[i] = std::unordered_map<AirportID, Edge>();
+    }
 }
 
 void Graph::insertAirport(AirportID airport) {
@@ -18,6 +21,7 @@ void Graph::insertAirport(AirportID airport) {
 void Graph::insertEdge(AirportID start, AirportID end, long double distance) {
     // Checks if both airports exist in the graph.
     if (adjacency_list.find(start) == adjacency_list.end() || adjacency_list.find(end) == adjacency_list.end()) {
+        std::cout << "Airport doesn't exist" << std::endl;
         return;
     }
 
