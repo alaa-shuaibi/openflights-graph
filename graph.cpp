@@ -21,7 +21,6 @@ void Graph::insertAirport(AirportID airport) {
 void Graph::insertEdge(AirportID start, AirportID end, long double distance) {
     // Checks if both airports exist in the graph.
     if (adjacency_list.find(start) == adjacency_list.end() || adjacency_list.find(end) == adjacency_list.end()) {
-        std::cout << "Airport doesn't exist" << std::endl;
         return;
     }
 
