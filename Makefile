@@ -1,13 +1,8 @@
 # Source: Final Project Demo GitHub (with some adjustments)
 EXENAME = finalproject
-<<<<<<< HEAD
 #this matches the object files 
 #OBJS = main.o Good.o Receipt.o
-OBJS = main.o algorithms.o graph.o edge.o readFromFile.o
-=======
-OBJS = main.o OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o
-
->>>>>>> 8d7caf51f58b55c752ed02f159b21c4c3146ec2f
+OBJS = main.o algorithms.o graph.o edge.o readFromFile.o OpenFlights.o
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++
@@ -49,13 +44,6 @@ algorithms.o: algorithms.cpp algorithms.h
 graph.o: graph.cpp graph.h
 	$(CXX) $(CXXFLAGS) graph.cpp
 
-<<<<<<< HEAD
-edge.o : edge.cpp edge.h
-	$(CXX) $(CXXFLAGS) edge.cpp
-
-
-readFromFile.o : readFromFile.cpp readFromFile.h
-=======
 edge.o: edge.cpp edge.h
 	$(CXX) $(CXXFLAGS) edge.cpp
 
@@ -63,7 +51,6 @@ miscellanies.o: miscellanies.cpp miscellanies.h
 	$(CXX) $(CXXFLAGS) miscellanies.cpp
 
 readFromFile.o: readFromFile.cpp readFromFile.h
->>>>>>> 8d7caf51f58b55c752ed02f159b21c4c3146ec2f
 	$(CXX) $(CXXFLAGS) readFromFile.cpp
 
 testmiscellanies: output_msg tests/catch/catchmain.cpp tests/test_miscellanies.cpp
