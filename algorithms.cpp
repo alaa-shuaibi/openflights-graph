@@ -1,6 +1,8 @@
 #include "algorithms.h"
 
-void Algorithms::BFS(Graph g, AirportID start) {}
+void Algorithms::BFS(Graph g, AirportID start) {
+    
+}
 
 void Algorithms::DFS(Graph g, AirportID start) {}
 
