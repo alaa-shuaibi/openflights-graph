@@ -1,12 +1,15 @@
 #pragma once
 #include "graph.h"
+#include "edge.h"
+#include "miscellanies.h"
+#include "OpenFlights.h"
 
 /**
  * Represents a collection of algorithms to run on a graph.
  */
 class Algorithms {
     public:
-        int **Dijkstra(); // sorts the graph based on the algorithm of Dijkstra
+        double Dijkstra(int starting_Airport, int ending_Airport); // sorts the graph based on the algorithm of Dijkstra
 
     private:
 };

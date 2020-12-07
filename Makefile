@@ -2,7 +2,7 @@
 EXENAME = finalproject
 #this matches the object files 
 #OBJS = main.o Good.o Receipt.o
-OBJS = main.o algorithms.o graph.o edge.o readFromFile.o OpenFlights.o
+OBJS = main.o algorithms.o graph.o edge.o readFromFile.o OpenFlights.o miscellanies.o
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
 LD = clang++

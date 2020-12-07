@@ -18,31 +18,31 @@ using std::ws;
 class Miscellanies {
     public:
         //void insert(const string & filename); // gets the string of available flights into the vector
-        void calculateDistances();
-        long double toRadians(const long double degree);
-        long double distance(long double lat1, long double long1, long double lat2, long double long2);
-        int **createGrid(const string & filename); // creates a graph of locations
-        bool extractDouble(string txt);
-        bool extractInt(string txt);
+        static void calculateDistances();
+        static long double toRadians(const long double degree);
+        static long double distance(long double lat1, long double long1, long double lat2, long double long2);
+        static int **createGrid(const string & filename); // creates a graph of locations
+        static bool extractDouble(string txt);
+        static bool extractInt(string txt);
 
         // below functions are helpers for working with airports.txt
-        int getIndex(string line);
-        string airport_name(string line);
-        string airport_city(string line);
-        string airport_country(string line);
-        long double airport_latitude(string line);
-        long double airport_longitude(string line);
+        static int getIndex(string line);
+        static string airport_name(string line);
+        static string airport_city(string line);
+        static string airport_country(string line);
+        static long double airport_latitude(string line);
+        static long double airport_longitude(string line);
 
         //below functions are helpers for working with routes.txt
-        int getAirlineID(string line);
-        int sourceAirportID(string line);
-        int destAirportID(string line);
-        int numStops(string line);
+        static int getAirlineID(string line);
+        static int sourceAirportID(string line);
+        static int destAirportID(string line);
+        static int numStops(string line);
 
         //below functions are helpers for working with airlines.txt
-        int AirlineIdentifier(string line);
-        string AirlineName(string line);
-        string AirlineCountry(string line);
+        static int AirlineIdentifier(string line);
+        static string AirlineName(string line);
+        static string AirlineCountry(string line);
 
     private:
         vector<double> distances_;
