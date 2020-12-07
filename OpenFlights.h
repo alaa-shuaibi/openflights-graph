@@ -1,6 +1,5 @@
 #pragma once
 #include "miscellanies.h"
-#include "traversal.h"
 #include "algorithms.h"
 
 /**

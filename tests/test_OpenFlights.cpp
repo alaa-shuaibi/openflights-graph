@@ -1,13 +1,14 @@
 #include "catch/catch.hpp"
 #include "../OpenFlights.h"
 
-TEST_CASE("testing test") {
-    SECTION("check if y = 3") {
-        int y = 3;
-        REQUIRE(y == 3);
+TEST_CASE("Example 4") {
+    SECTION("Check if x is equal to 3.") {
+        int x = 3;
+        REQUIRE(x == 3);
     }
-    SECTION("finally check if x = 1") {
-        int x = 2;
-        REQUIRE(x == 1);
+    
+    SECTION("Check if y is equal to 1.") {
+        int y = 2;
+        REQUIRE(y == 1);
     }
 }
