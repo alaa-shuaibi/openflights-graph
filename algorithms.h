@@ -10,7 +10,7 @@ class Algorithms {
 
         void DFS(Graph g, AirportID start);
 
-        double Dijkstra(Graph g, int starting_Airport, int ending_Airport);
+        void Dijkstra(Graph g, int start, int end);
 
         void Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint);
 
