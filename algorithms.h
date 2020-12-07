@@ -6,13 +6,13 @@
  */
 class Algorithms {
     public:
-        void BFS();
+        void BFS(Graph g, AirportID start);
 
-        void DFS();
+        void DFS(Graph g, AirportID start);
 
-        double Dijkstra(int starting_Airport, int ending_Airport);
+        double Dijkstra(Graph g, int starting_Airport, int ending_Airport);
 
-        void Landmark();
+        void Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint);
 
     private:
 };
