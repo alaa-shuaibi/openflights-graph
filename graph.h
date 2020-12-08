@@ -13,7 +13,7 @@
  * as a vector of airlines that travel between those two airports in 
  * the direction of the edge. 
  * 
- * @note Much of this class is based off of lab_ml.
+ * @note This class was heavily inspired by the graph class in lab_ml.
  */
 class Graph {
     public:
@@ -63,7 +63,7 @@ class Graph {
         std::vector<AirportID> getAdjacentAirports(AirportID source, bool sourceIsStart);
 
         /**
-         * @return A vector of all airports in the graph
+         * @return A vector of all airports in the graph.
          */
         std::vector<AirportID> getAllAirports();
 
@@ -80,12 +80,12 @@ class Graph {
 
     private:
         /**
-         * Adjaceny List for graph.
+         * The adjaceny list for the graph.
          */
         std::unordered_map<AirportID, std::unordered_map<AirportID, Edge>> adjacency_list;
 
         /**
-         * A vector of Airports.
+         * A vector of all airports in the graph.
          */
         std::vector<AirportID> airports;
 };

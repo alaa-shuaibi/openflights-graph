@@ -17,7 +17,7 @@ class Algorithms {
          * Traverses through the entire connected component that start is located in using the BFS algorithm.
          * 
          * @param visited Used by BFS(Graph g) to keep track of visited airports. 
-         * @param path Used by BFS(Graph g) generate a path of airports in the order they were visited.
+         * @param path Used by BFS(Graph g) to generate a path of airports in the order they were visited.
          * @return A vector of all visited airports in the order they were visited. 
          * If path is passed in with at least 1 element, it will be adjusted to contain the newly visited airports and then be returned.
          */
@@ -33,8 +33,8 @@ class Algorithms {
         /**
          * Traverses through the entire connected component that start is located in using the DFS algorithm.
          * 
-         * @param visited Used by BFS(Graph g) to keep track of visited airports. 
-         * @param path Used by BFS(Graph g) generate a path of airports in the order they were visited.
+         * @param visited Used by DFS(Graph g) to keep track of visited airports. 
+         * @param path Used by DFS(Graph g) to generate a path of airports in the order they were visited.
          * @return A vector of all visited airports in the order they were visited. 
          * If path is passed in with at least 1 element, it will be adjusted to contain the newly visited airports and then be returned.
          */
@@ -50,6 +50,4 @@ class Algorithms {
          * a checkpoint airport.
          */ 
         void Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint);
-
-    private:
 };

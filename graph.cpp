@@ -103,6 +103,12 @@ std::vector<AirportID> Graph::getAdjacentAirports(AirportID source) {
         adjAirports.push_back(it.first);
     }
 
+    for (size_t i = 0; i < airports.size(); i++) {
+        if (adjacency_list[i].find(source) != adjacency_list[i].end()) {
+            adjAirports.push_back(i);
+        }
+    }
+
     return adjAirports;
 }
 
