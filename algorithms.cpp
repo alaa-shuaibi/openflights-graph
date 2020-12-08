@@ -90,6 +90,42 @@ std::vector<AirportID> Algorithms::DFS(Graph g, AirportID start, std::unordered_
     return path;
 }
 
-void Algorithms::Dijkstra(Graph g, int start, int end) {}
+void Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
+    /*std::unordered_map<AirportID, AirportID> paths_;
+    std::priority_queue<AirportID, 
+    priority_queue.push(start);
+    std::unordered_map<AirportID, bool> visited;
+    AirportID curr = start;
+    visited[start] = true;
+    while (priority_queue.front() != end){
+        for (AirportID v: g.getAdjacentAirports(curr)){
+            if (visited.find(v) == visited.end()){
+                paths_[v] = curr;
+            }
+            
+        }
+    }*/
+    std::unordered_map<AirportID, AirportID> paths_;
+    std::unordered_map<AirportID, bool> visited_;
+    std::priority_queue<std::pair<AirportID, double>> distances_;
+    double distance = 0;
+    AirportID curr = start;
+    while (distances_.top.first != end)
+    {
+        for (AirportID v: g.getAdjacentAirports(curr)){
+            if (visited_.find(v) == visited_.end){
+                distances_.push(std::make_pair<v, Graph::getEdge(curr, v));
+                paths_[curr] = v;
+            }
+        }
+        visited_[curr] = true;
+    }
+
+    double output = 0;
+    for (auto elem: paths_){
+        output += Graph::getEdge(elem.first, elem.second);
+    }
+    
+}
 
 void Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {}
