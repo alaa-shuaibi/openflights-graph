@@ -51,7 +51,7 @@ std::vector<AirportID> Algorithms::DFS(Graph g) {
     std::unordered_map<AirportID, bool> visited;
 
     for (AirportID v : g.getAllAirports()) {
-        path = BFS(g, v, visited, path);
+        path = DFS(g, v, visited, path);
     }
 
     return path;
