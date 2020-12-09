@@ -139,3 +139,5 @@ void Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
 void Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {
     
 }
+
+

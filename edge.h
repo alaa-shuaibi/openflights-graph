@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <map>
 #include <iostream>
 
 typedef int AirportID;
@@ -8,7 +7,7 @@ typedef int AirportID;
 /**
  * Represents an Edge between a starting airport and ending airport. 
  * 
- * @note Much of this class is based off of lab_ml.
+ * @note This class was heavily inspired by the graph class in lab_ml.
  */
 class Edge {
     public:

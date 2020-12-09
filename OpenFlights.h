@@ -1,6 +1,7 @@
 #pragma once
 #include "miscellanies.h"
 #include "algorithms.h"
+#include <map>
 
 using std::ifstream;
 
