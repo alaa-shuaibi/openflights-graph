@@ -54,4 +54,5 @@ class Algorithms {
         void Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint);
 
     private:
+
 };
