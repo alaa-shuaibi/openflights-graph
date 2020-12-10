@@ -19,15 +19,23 @@ TEST_CASE("Dijkstra returns the correct path for a simple example.") {
     
     std::vector<AirportID> airports;
 
-    for (int i = 1; i <= 10; i++) {
+    for (int i = 1; i <= 5; i++) {
         airports.push_back(i);
     }
 
     Graph g = Graph(airports);
 
-    std::string path = algo.Dijkstra(g, 1, 10);
+    //std::string path = algo.Dijkstra(g, 1, 5);
 
-    REQUIRE(path == "");
+    //REQUIRE(path == "Path doesn't exist");
+
+    g.insertEdge(1, 2, 2);
+    g.insertEdge(2, 3, 2);
+    g.insertEdge(3, 4, 2);
+    g.insertEdge(4, 5, 2);
+
+    std::string path = algo.Dijkstra(g, 1, 5);
+    REQUIRE(path == "1->2->3->4->5");
 }
 /*
 TEST_CASE("Landmark returns the correct path for a simple example.") {
