@@ -135,17 +135,18 @@ void Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
         }
     }
     while (important_destinations.empty() == false || curr != end){
-        curr = important_destinations.top.first;
+        //curr = important_destinations.top.second;
         important_destinations.pop();
-        for (AirportID v: g.getAdjacentAirports(curr)){
+        for (AirportID v: g.getAdjacentAirports(curr, true)){
             if (visited_.find(v) == false && (g.getEdge(curr, v).getDistance() + curr_dist[curr] < curr_dist[v])){
                 curr_dist[v] = g.getEdge(curr, v).getDistance() + curr_dist[curr];
             }
             important_destinations.push(std::make_pair<curr_dist[v], v>);
+            //backtracking: 
         }
         visited_[curr] = true;
         path[curr] = important_destinations.top.second;
-        curr_dist+= g.getEdge(curr, important_destinations.top.second).getDistance();
+        //curr_dist[curr] += g.getEdge(curr, important_destinations.top.second).getDistance();
         curr = important_destinations.top.second;
         curr_dist[curr] = important_destinations.top.first;
     }
