@@ -11,7 +11,7 @@ class Algorithms {
          * 
          * @return A vector of all visited airports in the order they were visited.
          */
-        std::vector<AirportID> Algorithms::BFS(Graph g);
+        std::vector<AirportID> BFS(Graph g);
 
         /**
          * Traverses through the entire connected component that start is located in using the BFS algorithm.

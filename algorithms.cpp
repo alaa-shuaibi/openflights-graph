@@ -128,4 +128,25 @@ void Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
     
 }
 
-void Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {}
+void Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {
+    /** 
+     * map<airportID, long double> tentative distances
+     * map<airportID, true> visited
+     * priority_queue<airportID> q
+     * 
+     * q.push(start, 0)
+     * while (q is not empty)     
+     *  curr = q.top
+     *  q.pop
+     *  visited[curr] == true
+     *  if (curr == end) {
+     * 
+     *  }
+     *     for (v : curr.getAdj())
+     *        if (v isn't visited && (v.getTD > currTD + getDist(curr, v)))
+     *           q.push(v, currTD + getDist(curr, v))
+     *      
+     * 
+     */
+
+}
