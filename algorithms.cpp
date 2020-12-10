@@ -1,6 +1,8 @@
 #include "algorithms.h"
 #include <queue>
 #include <stack>
+#define INFINITY 1000000007
+#include <iostream>
 
 std::vector<AirportID> Algorithms::BFS(Graph g) {
     std::vector<AirportID> path;
@@ -27,7 +29,7 @@ std::vector<AirportID> Algorithms::BFS(Graph g, AirportID start, std::unordered_
         AirportID curr = q.front();
         q.pop();
         path.push_back(curr);
-        for(AirportID v: g.getAdjacentAirports(curr, true)){
+        for(AirportID v: g.getAdjacentAirports(curr)){
             // Check if airport is visited.
             if(visited.find(v) == visited.end()){
                 // Set airport to visited.
@@ -71,7 +73,7 @@ std::vector<AirportID> Algorithms::DFS(Graph g, AirportID start, std::unordered_
         AirportID curr = s.top();
         s.pop();
         path.push_back(curr);
-        for(AirportID v: g.getAdjacentAirports(curr, true)){
+        for(AirportID v: g.getAdjacentAirports(curr)){
             // Check if airport is visited.
             if(visited.find(v) == visited.end()){
                 // Set airport to visited.
@@ -90,31 +92,60 @@ std::vector<AirportID> Algorithms::DFS(Graph g, AirportID start, std::unordered_
     return path;
 }
 
-void Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
-    /*std::unordered_map<AirportID, AirportID> paths_;
-    std::priority_queue<AirportID, 
-    priority_queue.push(start);
-    std::unordered_map<AirportID, bool> visited;
+std::string Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
+    std::unordered_map<AirportID, bool> visited_; //makes sure the current vertex is visited
+    std::priority_queue<std::pair<double, AirportID>, std::vector<std::pair<double, AirportID>>, std::greater<std::pair<double, AirportID>>> important_destinations;
+    //pushes in the distances from current airport to the airports that have paths from the current and later sorts them out
+    std::unordered_map<AirportID, AirportID> path; 
+    std::unordered_map<AirportID, double> curr_dist; //updates the distance traveled from each vertex 
+    //std::vector<AirportID> adjacents_;
     AirportID curr = start;
-    visited[start] = true;
-    while (priority_queue.front() != end){
-        for (AirportID v: g.getAdjacentAirports(curr)){
-            if (visited.find(v) == visited.end()){
-                paths_[v] = curr;
-            }
-            
+    important_destinations.push(std::make_pair<0, start>);
+    curr_dist[start] = 0;
+
+    std::vector<AirportID> airports_ = g.getAllAirports();
+    for (unsigned long int idx = 0; idx < airports_.size(); idx++){
+        if (airports_[idx] != start){
+            curr_dist[idx] = INFINITY;
         }
-    }*/
-    std::unordered_map<AirportID, AirportID> paths_;
+        else{
+            curr_dist[idx] = 0;
+        }
+    }
+
+    while (important_destinations.empty() == false || curr != end) {
+        //curr = important_destinations.top.second;
+        important_destinations.pop();
+        for (AirportID v: g.getAdjacentAirports(curr, true)){
+            if (visited_.find(v) == visited_.end() && (g.getEdge(curr, v).getDistance() + curr_dist[curr] < curr_dist[v])){
+                curr_dist[v] = g.getEdge(curr, v).getDistance() + curr_dist[curr];
+            }
+            important_destinations.push(std::make_pair<curr_dist[v], v>);
+            //backtracking: 
+        }
+        visited_[curr] = true;
+        path[curr] = important_destinations.top().second;
+        //curr_dist[curr] += g.getEdge(curr, important_destinations.top.second).getDistance();
+        curr = important_destinations.top().second;
+        curr_dist[curr] = important_destinations.top().first;
+    }
+    
+    return "";
+}
+
+std::string Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {
+    /*std::unordered_map<AirportID, AirportID> paths_;
     std::unordered_map<AirportID, bool> visited_;
+    std::unordered_map<AirportID, double> values_;  
     std::priority_queue<std::pair<AirportID, double>> distances_;
     double distance = 0;
     AirportID curr = start;
-    while (distances_.top().first != end)
+    values_[curr] = 0;
+    while (distances_.top.first != end)
     {
-        for (AirportID v: g.getAdjacentAirports(curr, true)){
-            if (visited_.find(v) == visited_.end()){
-                distances_.push(std::make_pair(v, g.getEdge(curr, v).getDistance()));
+        for (AirportID v: g.getAdjacentAirports(curr)){
+            if (visited_.find(v) == false && ){
+                distances_.push(std::make_pair<v, Graph::getEdge(curr, v));
                 paths_[curr] = v;
             }
         }
@@ -123,12 +154,9 @@ void Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
 
     double output = 0;
     for (auto elem: paths_){
-        output += g.getEdge(elem.first, elem.second).getDistance();
-    }
+        output += Graph::getEdge(elem.first, elem.second);
+    }*/
     
-}
-
-void Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {
     /** 
      * map<airportID, long double> tentative distances
      * map<airportID, true> visited
@@ -148,5 +176,7 @@ void Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID che
      *      
      * 
      */
-
+    return "";
 }
+
+
