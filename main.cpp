@@ -25,23 +25,41 @@ int main() {
 
     //the size of the vector is 26832. About 3.48 indexes for each line of the airports.txt file
     std::cout << "size = : " << testRFF.size() << std::endl;
-*/    
-    std::cout << "Welcome to a Graph-Based implementation of Traversal and Shortest Path\n Algorithms for the OpenFlights dataset\nType 1 for BFS (Bread First Search) 2 for Dijkstra's Algorithm or 3 for Landmark Path:" << std::endl;
+*/  
     int input;
-    std::cin >> input;
+    //if invalid input is provided twice, end program
+    int toExit = 0;
     
-    if(input == 1){ //call BFS
-
-    }
-    else if(input == 2){ // call Dijkstra's
-
-    }
-    else if(input == 3){ //call Landmark path
-
-    }
-    else{
-        std::cout << "Invalid Input. Rerun Program and Type 1, 2, or 3 and press Enter:" << std::endl;
+    std::cout << "Welcome to a Graph-Based implementation of Breadth First Traversal (BFS), Dijkstra's Shortest Path, and Landmark Path Algorithms for the OpenFlights dataset\n\n";
+    std::cout <<"Authors (listed alphabetically): Alaa Shuaibi (ashuai6), Chidambara Anagani (canaga2), Praneeth Mekapati (pm14), and Rahul Vasanth (rvasant2)\n";
         
-    }
+    //Load File First
+
+    //If Valid, Construct Graph
+
+    do{
+        std:: cout << "\nType 1, 2, 3, or 4 for the following:\n1 - BFS\n2 - Dijkstra's Algorithm\n3 - Landmark Path\n4 - Input new File\n";
+    
+        std::cin >> input;
+
+        if(input == 1){ //call BFS
+            std::cout << "BFS call" << std::endl;
+        }
+        else if(input == 2){ // call Dijkstra's
+            std::cout << "Dijkstra call" << std::endl;
+        }
+        else if(input == 3){ //call Landmark path
+            std::cout << "Landmark call" << std::endl;
+        }
+        else if(input == 4){
+            std::cout << "Input new file" << std::endl;
+        }
+        else{
+            std::cout << "Invalid Input" << std::endl;
+            toExit++;
+        }
+
+    }while(toExit < 2); //allow one invalid input
+
     return 0;
 }
