@@ -106,6 +106,7 @@ TEST_CASE("Dijkstra returns the correct path for another complex example.") {
     g.insertEdge(6, 4, .93);
 
     std::string path = algo.Dijkstra(g, 0, 6);
+    std::cout << algo.Dijkstra(g, 5, 6) << std::endl;
     REQUIRE(path == "0->2->7->3->6");
 }
 

@@ -161,8 +161,12 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-
-    return stoi(data[1]);
+    if (extractInt(data[1]) == true){
+        return stoi(data[1]);
+    }
+    else{
+        return -1;
+    }
 }
 
  int Miscellanies::sourceAirportID(string line){
@@ -173,9 +177,12 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-
-    
-    return stoi(data[3]);
+    if (extractInt(data[3]) == true){
+        return stoi(data[3]);
+    }
+    else{
+        return -1;
+    }
 }
 
  int Miscellanies::destAirportID(string line){
@@ -187,8 +194,12 @@ int Miscellanies::getIndex(string line)
         data.push_back(substring);
     }
 
-    
-    return stoi(data[5]);
+    if (extractInt(data[5]) == true){
+        return stoi(data[5]);
+    }
+    else{
+        return -1;
+    }
 }
 
  int Miscellanies::numStops(string line){
@@ -199,9 +210,13 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-
     
-    return stoi(data[7]);
+    if (extractInt(data[7]) == true){
+        return stoi(data[7]);
+    }
+    else{
+        return -1;
+    }
 }
 
 
