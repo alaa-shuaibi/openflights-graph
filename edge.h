@@ -27,22 +27,27 @@ class Edge {
         Edge(AirportID start, AirportID end, long double distance, std::vector<int> airlines);
 
         /**
-         * @return Starting AirportID
+         * Inserts an airline into the edge.
+         */
+        void insertAirline(int airlineID);
+
+        /**
+         * @return The starting AirportID.
          */
         AirportID getStart();
 
         /**
-         * @return Ending AirportID
+         * @return The ending AirportID.
          */
         AirportID getEnd();
 
         /**
-         * @return Distance between two airports
+         * @return The distance between two airports.
          */
         long double getDistance();
 
         /**
-         * @return Vector of airlines that travel from start to end
+         * @return A vector of airlines that travel from start to end.
          */
         std::vector<int> getAirlines();
 

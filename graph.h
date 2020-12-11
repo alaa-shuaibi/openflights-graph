@@ -41,14 +41,6 @@ class Graph {
          * Inserts an edge from start to end with the given distance and vector of airlines.
          */
         void insertEdge(AirportID start, AirportID end, long double distance, std::vector<int> airlines);
-
-        /**
-         * Inserts an airline into the edge from start to end (if the edge exists).
-         * 
-         * If isBidirectional is true and there exists an edge from end to start,
-         * then the airline will also be added to the edge from end to start.
-         */
-        void insertAirline(AirportID start, AirportID end, int airlineID, bool isBidirectional);
         
         /**
          * @return A vector of all airports that share an edge with the given airport.
