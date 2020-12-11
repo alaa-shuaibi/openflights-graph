@@ -1,7 +1,6 @@
 #include "algorithms.h"
 #include <queue>
 #include <stack>
-#include <algorithm>
 
 std::vector<AirportID> Algorithms::BFS(Graph g) {
     std::vector<AirportID> path;
