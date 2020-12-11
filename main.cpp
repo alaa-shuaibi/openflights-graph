@@ -42,9 +42,7 @@ int main() {
     //hardcoded in for now.
 
     //Load File First
-    OpenFlights o;
-    //o.loadData("airports.txt");
-    o.loadRoutes("routes.txt");
+    OpenFlights o= OpenFlights("airports.txt", "routes.txt");
     //o.loadEdges(false);
     
     //o.loadRoutes("routes.txt");
