@@ -15,14 +15,14 @@ class OpenFlights {
         OpenFlights(const string & airports_file, const string & routes_file);
 
         /**
+         * @return The graph representing the data.
+         */ 
+        Graph getGraph();
+
+        /**
          * @return The AirportID of the given airport.
          */
         AirportID getAirportID(string name);
-
-        /**
-         * @return The graph representing data.
-         */ 
-        Graph getGraph();
 
         /**
          * Stores data for a specific airport.

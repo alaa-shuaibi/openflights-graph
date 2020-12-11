@@ -5,6 +5,12 @@ OpenFlights::OpenFlights(const string & airports_file, const string & routes_fil
     loadRoutes(routes_file);
 }
 
+Graph OpenFlights::getGraph() {
+    return graph;
+}
+
+AirportID OpenFlights::getAirportID(string name) {}
+
 void OpenFlights::loadAirports(const string & filename){
     string txt;
     ifstream myfile(filename);
