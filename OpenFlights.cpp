@@ -36,7 +36,6 @@ void OpenFlights::loadData(const string & filename){
         longitude = Miscellanies::airport_longitude(txt);
         AirportData point = {Airport_Name, city, country, latitude, longitude};
         airportMap.insert({ID, point});
-        
     }
     
     myfile.close();
@@ -119,4 +118,3 @@ size_t OpenFlights::airportNetworkSize(AirportID airport){
     }
     return destinations.size();
 }
-

@@ -72,18 +72,17 @@ class OpenFlights {
             long double longitude;
         };
 
-        struct Airline {
-            string Airline_name;
-            string Airline_country;
-        };
-
         struct Route {
             long int AirlineID;
             long int ending_AirportID;
             long int num_stops;
             long double distance;
         };
-        
+
+        struct Airline {
+            string Airline_name;
+            string Airline_country;
+        };
 
     private:
         /**
