@@ -18,7 +18,6 @@ std::vector<AirportID> Algorithms::BFS(Graph g, AirportID start, std::unordered_
         return path;
     }
 
-    // No need to label edges yet.
     std::queue<AirportID> q;
     visited[start] = true;
     q.push(start);
@@ -33,13 +32,9 @@ std::vector<AirportID> Algorithms::BFS(Graph g, AirportID start, std::unordered_
                 // Set airport to visited.
                 visited[v] = true;
 
-                // Label edge as discovery edge.
-
                 // Push airport to queue.
                 q.push(v);
             }
-            // else if (edge == UNEXPLORED)
-                // Label edge as cross edge.
         }
     }
 
@@ -62,7 +57,6 @@ std::vector<AirportID> Algorithms::DFS(Graph g, AirportID start, std::unordered_
         return path;
     }
     
-    // No need to label edges yet.
     std::stack<AirportID> s;
     visited[start] = true;
     s.push(start);
@@ -77,13 +71,9 @@ std::vector<AirportID> Algorithms::DFS(Graph g, AirportID start, std::unordered_
                 // Set airport to visited.
                 visited[v] = true;
 
-                // Label edge as discovery edge.
-
                 // Push airport to stack.
                 s.push(v);
             }
-            // else if (edge == UNEXPLORED)
-                // Label edge as back edge.
         }
     }
 
