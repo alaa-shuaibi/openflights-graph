@@ -29,7 +29,7 @@ void OpenFlights::loadData(const string & filename){
     myfile.close();
 }
 
-void OpenFlights::loadAirlines(const string & filename){
+/*void OpenFlights::loadAirlines(const string & filename){
     string txt;
     ifstream myfile(filename);
 
@@ -43,7 +43,7 @@ void OpenFlights::loadAirlines(const string & filename){
         Airline point = {airlineName, country};
         airlines_.insert({ID, point});
     }
-}
+}*/
 
 void OpenFlights::loadRoutes(const string & filename){
     string txt;
@@ -58,11 +58,14 @@ void OpenFlights::loadRoutes(const string & filename){
         AirlineID = Miscellanies::getAirlineID(txt);
         ending_AirportID = Miscellanies::destAirportID(txt);
         num_stops = Miscellanies::numStops(txt);
+        if (starting_ID == -1 || AirlineID == -1 || ending_AirportID == -1 || num_stops == -1){
+            break;
+        }
         distance_ = Miscellanies::distance(airportMap[starting_ID].latitude, airportMap[starting_ID].longitude, airportMap[ending_AirportID].latitude, airportMap[ending_AirportID].longitude);
         Route point = {AirlineID, ending_AirportID, num_stops, distance_};
         routes_.insert({starting_ID, point});
     }
-
+    myfile.close();
 
 }
 

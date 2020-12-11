@@ -18,7 +18,7 @@ class OpenFlights {
         /**
         * Constructor that also loads in the data by calling loadData.
         */
-        OpenFlights(const string & filename, const string & filename);
+        OpenFlights(const string & filename, const string & filename2);
 
         /**
          * Loads data into airportMap and graph;
@@ -27,7 +27,7 @@ class OpenFlights {
 
         void loadRoutes(const string & filename);
 
-        void loadAirlines(const string & filename);
+        //void loadAirlines(const string & filename);
 
         /**
          * Loads edges into graph. 
@@ -67,10 +67,6 @@ class OpenFlights {
             long double longitude;
         };
 
-        struct Airline {
-            string Airline_name;
-            string Airline_country;
-        };
 
         struct Route {
             long int AirlineID;
@@ -88,7 +84,6 @@ class OpenFlights {
 
         std::map<AirportID, Route> routes_;
 
-        std::map<AirportID, Airline> airlines_;
 
         /**
          * A graph to load the aiports in.

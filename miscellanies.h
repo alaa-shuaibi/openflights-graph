@@ -45,6 +45,5 @@ class Miscellanies {
         static string AirlineCountry(string line);
 
     private:
-        vector<double> distances_;
         // size of array storing the flights available and the coordinates array
 };
