@@ -26,15 +26,31 @@ int main() {
     //the size of the vector is 26832. About 3.48 indexes for each line of the airports.txt file
     std::cout << "size = : " << testRFF.size() << std::endl;
 */  
-    int input;
+    int input, start, end, checkPoint;
+    string fileName;
     //if invalid input is provided twice, end program
     int toExit = 0;
     
     std::cout << "Welcome to a Graph-Based implementation of Breadth First Traversal (BFS), Dijkstra's Shortest Path, and Landmark Path Algorithms for the OpenFlights dataset\n\n";
     std::cout <<"Authors (listed alphabetically): Alaa Shuaibi (ashuai6), Chidambara Anagani (canaga2), Praneeth Mekapati (pm14), and Rahul Vasanth (rvasant2)\n";
-        
-    //Load File First
 
+    Algorithms algo = Algorithms();
+
+    std::cout << "Input the name of your (properly formatted) file:";
+    std::cin >> fileName;
+    // this can be repeated for routes/airlines/airports if necessary
+    //hardcoded in for now.
+
+    //Load File First
+    //OpenFlights o;
+    //o.loadData("airport.txt");
+    //o.loadRoutes("routes.txt");
+    //o.loadEdges(false);
+    
+    //o.loadRoutes("routes.txt");
+
+
+    
     //If Valid, Construct Graph
 
     do{
@@ -43,16 +59,37 @@ int main() {
         std::cin >> input;
 
         if(input == 1){ //call BFS
-            std::cout << "BFS call" << std::endl;
+            //std::cout << "BFS call" << std::endl;
+            auto airportVec = algo.BFS(g);
+            //iterate through and print
+            
         }
         else if(input == 2){ // call Dijkstra's
-            std::cout << "Dijkstra call" << std::endl;
+            std::cout << "Input starting AirportID:";
+            std::cin >> start;
+            std::cout << "Input ending AirportID:";
+            std::cin >> end;
+            //comment out this line when graph is loaded and uncomment next line
+            std::cout << "Dijkstra Path: algo.Dijkstra(g, " << start << ", " << end << ") = "  << std::endl;
+            
+//          std::cout << "Dijkstra Path: " << algo.Dijkstra(g, start, end) << std::endl;
         }
         else if(input == 3){ //call Landmark path
-            std::cout << "Landmark call" << std::endl;
+            std::cout << "Input starting AirportID:";
+            std::cin >> start;
+            std::cout << "Input ending AirportID:";
+            std::cin >> end;
+            std::cout << "Input checkPoint AirportID:";
+            std::cin >> checkPoint;
+            //comment out this line when graph is loaded and uncomment next line      
+            std::cout << "Landmark Path: algo.Landmark(g, " << start << ", " << end << ", " << checkPoint << ") = "  << std::endl;
+
+//            std::cout << "Landmark Path: " << algo.Landmark(g, start, end, checkPoint) << std::endl;
         }
         else if(input == 4){
-            std::cout << "Input new file" << std::endl;
+            std::cout << "Input new file:";
+            std::cin >> fileName;
+            //load files and make new graph, same code as above loop
         }
         else{
             std::cout << "Invalid Input" << std::endl;
