@@ -84,29 +84,29 @@ TEST_CASE("Dijkstra returns the correct path for another complex example.") {
     
     std::vector<AirportID> airports;
 
-    for (int i = 1; i <= 10; i++) {
+    for (int i = 0; i <= 10; i++) {
         airports.push_back(i);
     }
 
     Graph g = Graph(airports);
-    g.insertEdge(4, 5, 0.35);
-    g.insertEdge(5, 4, 0.35);
-    g.insertEdge(4, 7, 0.37);
-    g.insertEdge(5, 7, 0.28);
-    g.insertEdge(7, 5, 0.28);
-    g.insertEdge(5, 1, 0.32);
-    g.insertEdge(0, 4, 0.38);
-    g.insertEdge(0, 2, 0.26);
-    g.insertEdge(7, 3, 0.39);
-    g.insertEdge(1, 3, 0.29);
-    g.insertEdge(2, 7, 0.34);
-    g.insertEdge(6, 2, 0.40);
-    g.insertEdge(3, 6, 0.52);
-    g.insertEdge(6, 0, 0.58);
-    g.insertEdge(6, 4, 0.93);
+    g.insertEdge(4, 5, .35);
+    g.insertEdge(5, 4, .35);
+    g.insertEdge(4, 7, .37);
+    g.insertEdge(5, 7, .28);
+    g.insertEdge(7, 5, .28);
+    g.insertEdge(5, 1, .32);
+    g.insertEdge(0, 4, .38);
+    g.insertEdge(0, 2, .26);
+    g.insertEdge(7, 3, .39);
+    g.insertEdge(1, 3, .29);
+    g.insertEdge(2, 7, .34);
+    g.insertEdge(6, 2, .40);
+    g.insertEdge(3, 6, .52);
+    g.insertEdge(6, 0, .58);
+    g.insertEdge(6, 4, .93);
 
     std::string path = algo.Dijkstra(g, 0, 6);
-    std::cout << path << std::endl;
+    REQUIRE(path == "0->2->7->3->6");
 }
 
 TEST_CASE("Landmark returns the correct path for a simple example.") {
