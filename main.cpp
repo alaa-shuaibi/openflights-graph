@@ -60,7 +60,7 @@ int main() {
 
         if(input == 1){ //call BFS
             //std::cout << "BFS call" << std::endl;
-            auto airportVec = algo.BFS(g);
+            //auto airportVec = algo.BFS(g);
             //iterate through and print
             
         }
