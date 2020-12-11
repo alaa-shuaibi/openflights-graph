@@ -5,6 +5,19 @@ OpenFlights::OpenFlights() {
     // Does nothing yet for now.
 }
 
+OpenFlights::OpenFlights(const string & airports_file, const string & routes_file) {
+    loadData(airports_file);
+    loadRoutes(routes_file);
+    loadEdges(false);
+}
+
+OpenFlights::OpenFlights(const string & airports_file, const string & routes_file, const string & airlines_file) {
+    loadData(airports_file);
+    loadRoutes(routes_file);
+    loadAirlines(airlines_file);
+    loadEdges(true);
+}
+
 void OpenFlights::loadData(const string & filename){
     string txt;
     ifstream myfile(filename);
@@ -105,10 +118,5 @@ size_t OpenFlights::airportNetworkSize(AirportID airport){
         }
     }
     return destinations.size();
-}
-
-OpenFlights::OpenFlights(const string & filename) {
-    loadData(filename);
-    loadRoutes(filename);
 }
 

@@ -98,6 +98,7 @@ std::string Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
         curr = q.top().second;
         visited_[curr] = true;
         q.pop();
+        
         // Checks if current airport is the end.
         if (curr == end) {
             break;
