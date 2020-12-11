@@ -18,7 +18,7 @@ class OpenFlights {
         /**
         * Constructor that also loads in the data by calling loadData.
         */
-        OpenFlights(const string & filename);
+        OpenFlights(const string & filename, const string & filename);
 
         /**
          * Loads data into airportMap and graph;
