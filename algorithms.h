@@ -1,7 +1,6 @@
 #pragma once
 #include "graph.h"
-#include "miscellanies.h"
-#include "OpenFlights.h"
+#include <iostream>
 
 /**
  * Represents a collection of algorithms to run on a graph.

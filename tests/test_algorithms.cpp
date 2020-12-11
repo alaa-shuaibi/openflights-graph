@@ -19,25 +19,32 @@ TEST_CASE("Dijkstra returns the correct path for a simple example.") {
     
     std::vector<AirportID> airports;
 
-    for (int i = 1; i <= 5; i++) {
+    for (int i = 1; i <= 10; i++) {
         airports.push_back(i);
     }
 
     Graph g = Graph(airports);
 
-    //std::string path = algo.Dijkstra(g, 1, 5);
+    std::string path = algo.Dijkstra(g, 1, 10);
 
-    //REQUIRE(path == "Path doesn't exist");
+    REQUIRE(path == "Path doesn't exist.");
 
-    g.insertEdge(1, 2, 2);
+    g.insertEdge(1, 2, 1);
     g.insertEdge(2, 3, 2);
-    g.insertEdge(3, 4, 2);
-    g.insertEdge(4, 5, 2);
+    g.insertEdge(2, 4, 3);
+    g.insertEdge(2, 5, 4);
+    g.insertEdge(4, 6, 10);
+    g.insertEdge(4, 7, 9);
+    g.insertEdge(4, 8, 1);
+    g.insertEdge(6, 9, 2);
+    g.insertEdge(7, 10, 30);
+    g.insertEdge(9, 10, 2);
 
-    std::string path = algo.Dijkstra(g, 1, 5);
-    REQUIRE(path == "1->2->3->4->5");
+    path = algo.Dijkstra(g, 1, 10);
+
+    REQUIRE(path == "1->2->4->6->9->10");
 }
-/*
+
 TEST_CASE("Landmark returns the correct path for a simple example.") {
     Algorithms algo = Algorithms();
     
@@ -48,9 +55,23 @@ TEST_CASE("Landmark returns the correct path for a simple example.") {
     }
 
     Graph g = Graph(airports);
-    std::string path;
-    
-    path = algo.Landmark(g, 1, 10);
 
-    REQUIRE(path == "");
-}*/
+    std::string path = algo.Landmark(g, 1, 10, 2);
+
+    REQUIRE(path == "Path doesn't exist.");
+
+    g.insertEdge(1, 2, 1);
+    g.insertEdge(2, 3, 2);
+    g.insertEdge(2, 4, 3);
+    g.insertEdge(2, 5, 4);
+    g.insertEdge(4, 6, 10);
+    g.insertEdge(4, 7, 9);
+    g.insertEdge(4, 8, 1);
+    g.insertEdge(6, 9, 2);
+    g.insertEdge(7, 10, 30);
+    g.insertEdge(9, 10, 2);
+
+    path = algo.Landmark(g, 1, 10, 7);
+
+    REQUIRE(path == "1->2->4->7->10");
+}

@@ -7,7 +7,7 @@ Graph::Graph() {
 Graph::Graph(std::vector<AirportID> airports) {
     this->airports = airports;
     for (size_t i = 0; i < this->airports.size(); i++) {
-        adjacency_list[i] = std::unordered_map<AirportID, Edge>();
+        adjacency_list[this->airports[i]] = std::unordered_map<AirportID, Edge>();
     }
 }
 

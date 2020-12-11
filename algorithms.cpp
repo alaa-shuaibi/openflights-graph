@@ -1,8 +1,7 @@
 #include "algorithms.h"
 #include <queue>
 #include <stack>
-#define INFINITY 1000000007
-#include <iostream>
+#include <algorithm>
 
 std::vector<AirportID> Algorithms::BFS(Graph g) {
     std::vector<AirportID> path;
@@ -92,48 +91,55 @@ std::vector<AirportID> Algorithms::DFS(Graph g, AirportID start, std::unordered_
     return path;
 }
 
-std::string Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
-    std::unordered_map<AirportID, bool> visited_; //makes sure the current vertex is visited
-    std::priority_queue<std::pair<double, AirportID>, std::vector<std::pair<double, AirportID>>, std::greater<std::pair<double, AirportID>>> important_destinations;
-    //pushes in the distances from current airport to the airports that have paths from the current and later sorts them out
-    std::unordered_map<AirportID, AirportID> previous;
-    std::unordered_map<AirportID, double> curr_dist; //updates the distance traveled from each vertex 
-    //std::vector<AirportID> adjacents_;
-    AirportID curr = start;
-    important_destinations.push(std::make_pair(0, start));
-
-    std::vector<AirportID> airports_ = g.getAllAirports();
-    for (unsigned long int idx = 0; idx < airports_.size(); idx++){
-        curr_dist[idx] = INFINITY;
+std::string Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {    
+    if (start == end) {
+        return "You have arrived at your destination!";
     }
+
+    std::priority_queue<std::pair<double, AirportID>, std::vector<std::pair<double, AirportID>>, std::greater<std::pair<double, AirportID>>> q;
+    std::unordered_map<AirportID, bool> visited_; // Marks airports as visited.
+    std::unordered_map<AirportID, double> curr_dist; // Maps each airport to its distance from start.
+    std::unordered_map<AirportID, AirportID> previous; // Keeps track of the current shortest path.
+
+    AirportID curr;
+    q.push(std::make_pair(0, start));
     curr_dist[start] = 0;
-    while (!important_destinations.empty()){
-        curr = important_destinations.top().second;
-        important_destinations.pop();
-        std::cout << curr << ", " << curr_dist[curr] << std::endl;
-        for (AirportID v: g.getAdjacentAirports(curr, true)){
-            if (visited_.find(v) == visited_.end() && (g.getEdge(curr, v).getDistance() + curr_dist[curr] < curr_dist[v])){
-                curr_dist[v] = g.getEdge(curr, v).getDistance() + curr_dist[curr];
-                previous[v] = curr;
-            }
-            important_destinations.push(std::make_pair(curr_dist[v], v));
-            //backtracking: 
-        }
-        visited_[curr] = true;
-        //previous[curr] = important_destinations.top().second;
-        //curr_dist[curr] += g.getEdge(curr, important_destinations.top.second).getDistance();
-        //curr = important_destinations.top.second;
-        curr_dist[curr] = important_destinations.top().first;
-    }
-    std::cout << curr << ", " << curr_dist[curr] << std::endl;
 
-    curr = end;
-    std::string path = "" + end;
-    if (previous.find(curr) == previous.end()) {
-            return "Path doesn't exist.";
+    while (!q.empty()) {
+        curr = q.top().second;
+        visited_[curr] = true;
+        q.pop();
+
+        // Checks if current airport is the end.
+        if (curr == end) {
+            break;
+        }
+
+        for (AirportID v: g.getAdjacentAirports(curr, true)) {
+            if (visited_.find(v) != visited_.end()) {
+                continue;
+            }
+
+            long double newDistance = g.getEdge(curr, v).getDistance() + curr_dist[curr];
+            
+            if (curr_dist.find(v) == curr_dist.end() || newDistance < curr_dist[v]) {
+                curr_dist[v] = newDistance;
+                previous[v] = curr;
+                q.push(std::make_pair(curr_dist[v], v));
+            }
+        }
     }
+
+    // Checks if end was found.
+    if (previous.find(end) == previous.end()) {
+        return "Path doesn't exist.";
+    }
+
+    // Loads path into string.
+    std::string path = std::to_string(end);
+    curr = end;
     while (curr != start) {
-        path = "->" + previous[curr];
+        path = std::to_string(previous[curr]) + "->" + path;
         curr = previous[curr];
     }
 
@@ -141,49 +147,24 @@ std::string Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
 }
 
 std::string Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {
-    /*std::unordered_map<AirportID, AirportID> paths_;
-    std::unordered_map<AirportID, bool> visited_;
-    std::unordered_map<AirportID, double> values_;  
-    std::priority_queue<std::pair<AirportID, double>> distances_;
-    double distance = 0;
-    AirportID curr = start;
-    values_[curr] = 0;
-    while (distances_.top.first != end)
-    {
-        for (AirportID v: g.getAdjacentAirports(curr)){
-            if (visited_.find(v) == false && ){
-                distances_.push(std::make_pair<v, Graph::getEdge(curr, v));
-                paths_[curr] = v;
-            }
-        }
-        visited_[curr] = true;
+    if (start == checkpoint || end == checkpoint) {
+        return Dijkstra(g, start, end);
     }
 
-    double output = 0;
-    for (auto elem: paths_){
-        output += Graph::getEdge(elem.first, elem.second);
-    }*/
+    std::string path1 = Dijkstra(g, start, checkpoint);
     
-    /** 
-     * map<airportID, long double> tentative distances
-     * map<airportID, true> visited
-     * priority_queue<airportID> q
-     * 
-     * q.push(start, 0)
-     * while (q is not empty)     
-     *  curr = q.top
-     *  q.pop
-     *  visited[curr] == true
-     *  if (curr == end) {
-     * 
-     *  }
-     *     for (v : curr.getAdj())
-     *        if (v isn't visited && (v.getTD > currTD + getDist(curr, v)))
-     *           q.push(v, currTD + getDist(curr, v))
-     *      
-     * 
-     */
-    return "";
+    if (path1 == "Path doesn't exist.") {
+        return path1;
+    }
+    std::string path2 = Dijkstra(g, checkpoint, end);
+
+    if (path2 == "Path doesn't exist.") {
+        return path2;
+    }
+
+    int cpStringSize = std::to_string(checkpoint).size();
+
+    return path1 + "->" + path2.substr(cpStringSize + 2);
 }
 
 
