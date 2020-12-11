@@ -107,8 +107,8 @@ size_t OpenFlights::airportNetworkSize(AirportID airport){
     return destinations.size();
 }
 
-OpenFlights::OpenFlights(const string & filename) {
+OpenFlights::OpenFlights(const string & filename, const string& filename2) {
     loadData(filename);
-    loadRoutes(filename);
+    loadRoutes(filename2);
 }
 

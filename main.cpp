@@ -36,15 +36,15 @@ int main() {
 
     Algorithms algo = Algorithms();
 
-    std::cout << "Input the name of your (properly formatted) file:";
-    std::cin >> fileName;
+    //std::cout << "Input the name of your (properly formatted) file:";
+    //std::cin >> fileName;
     // this can be repeated for routes/airlines/airports if necessary
     //hardcoded in for now.
 
     //Load File First
-    //OpenFlights o;
-    //o.loadData("airport.txt");
-    //o.loadRoutes("routes.txt");
+    OpenFlights o;
+    //o.loadData("airports.txt");
+    o.loadRoutes("routes.txt");
     //o.loadEdges(false);
     
     //o.loadRoutes("routes.txt");
