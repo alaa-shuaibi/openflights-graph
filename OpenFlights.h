@@ -19,6 +19,12 @@ class OpenFlights {
         * Constructor that also loads in the data by calling loadData.
         */
         OpenFlights(const string & filename, const string & filename2);
+        OpenFlights(const string & airports_file, const string & routes_file);
+
+        /**
+        * Constructor that also loads in the data by calling loadData.
+        */
+        OpenFlights(const string & airports_file, const string & routes_file, const string & airlines_file);
 
         /**
          * Loads data into airportMap and graph;
@@ -74,7 +80,11 @@ class OpenFlights {
             long int num_stops;
             long double distance;
         };
-        
+
+        struct Airline {
+            string Airline_name;
+            string Airline_country;
+        };
 
     private:
         /**

@@ -18,10 +18,10 @@ using std::ws;
 class Miscellanies {
     public:
         //void insert(const string & filename); // gets the string of available flights into the vector
-        static void calculateDistances();
+        //static void calculateDistances();
         static long double toRadians(const long double degree);
         static long double distance(long double lat1, long double long1, long double lat2, long double long2);
-        static int **createGrid(const string & filename); // creates a graph of locations
+        //static int **createGrid(const string & filename); // creates a graph of locations
         static bool extractDouble(string txt);
         static bool extractInt(string txt);
 
