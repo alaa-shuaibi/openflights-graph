@@ -17,11 +17,8 @@ using std::ws;
  */
 class Miscellanies {
     public:
-        //void insert(const string & filename); // gets the string of available flights into the vector
-        //static void calculateDistances();
         static long double toRadians(const long double degree);
         static long double distance(long double lat1, long double long1, long double lat2, long double long2);
-        //static int **createGrid(const string & filename); // creates a graph of locations
         static bool extractDouble(string txt);
         static bool extractInt(string txt);
 
@@ -43,7 +40,4 @@ class Miscellanies {
         static int AirlineIdentifier(string line);
         static string AirlineName(string line);
         static string AirlineCountry(string line);
-
-    private:
-        // size of array storing the flights available and the coordinates array
 };

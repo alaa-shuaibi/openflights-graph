@@ -1,21 +1,19 @@
 #include "miscellanies.h"
-#include <iostream>
 #include <typeinfo>
 
-
- bool Miscellanies::extractDouble(string txt){
+bool Miscellanies::extractDouble(string txt){
     istringstream iss(txt);
     double d;
     return iss >> d >> ws && iss.eof();
 }
 
- bool Miscellanies::extractInt(string txt){
+bool Miscellanies::extractInt(string txt){
     istringstream iss(txt);
     int d;
     return iss >> d >> ws && iss.eof();
 }
 
- long double Miscellanies::toRadians(const long double degree) 
+long double Miscellanies::toRadians(const long double degree) 
 { 
     double pi = 2 * acos(0);
     long double one_deg = (pi) / 180; 
@@ -40,7 +38,6 @@ long double Miscellanies::distance(long double latitude0, long double longitude0
     return (ans * R); 
 }
 
-// The below functions are for airports.txt
 int Miscellanies::getIndex(string line) 
 { 
     vector<string> data;
@@ -53,7 +50,7 @@ int Miscellanies::getIndex(string line)
     return stoi(data[0]);
 } 
 
- string Miscellanies::airport_name(string line) 
+string Miscellanies::airport_name(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -65,7 +62,7 @@ int Miscellanies::getIndex(string line)
     return data[1];
 } 
 
- string Miscellanies::airport_city(string line) 
+string Miscellanies::airport_city(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -77,7 +74,7 @@ int Miscellanies::getIndex(string line)
     return data[2];
 }
 
- string Miscellanies::airport_country(string line) 
+string Miscellanies::airport_country(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -89,7 +86,7 @@ int Miscellanies::getIndex(string line)
     return data[3];
 } 
 
- long double Miscellanies::airport_latitude(string line) 
+long double Miscellanies::airport_latitude(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -103,7 +100,7 @@ int Miscellanies::getIndex(string line)
     return ans;
 }
 
- long double Miscellanies::airport_longitude(string line) 
+long double Miscellanies::airport_longitude(string line) 
 { 
     vector<string> data;
     stringstream ss(line);
@@ -117,9 +114,7 @@ int Miscellanies::getIndex(string line)
     return ans;
 } 
 
-// The below helper functions are for working with airlines.txt
-
- int Miscellanies::AirlineIdentifier(string line){
+int Miscellanies::AirlineIdentifier(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -127,12 +122,10 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-
-    
     return stoi(data[0]);
 }
 
- string Miscellanies::AirlineName(string line){
+string Miscellanies::AirlineName(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -143,7 +136,7 @@ int Miscellanies::getIndex(string line)
     return data[1];
 }
 
- string Miscellanies::AirlineCountry(string line){
+string Miscellanies::AirlineCountry(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -154,8 +147,7 @@ int Miscellanies::getIndex(string line)
     return data[6];
 }
 
-// Functions below are helpers for working with routes.txt
- int Miscellanies::getAirlineID(string line){
+int Miscellanies::getAirlineID(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -172,7 +164,7 @@ int Miscellanies::getIndex(string line)
     return stoi(data[1]);
 }
 
- int Miscellanies::sourceAirportID(string line){
+int Miscellanies::sourceAirportID(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -189,7 +181,7 @@ int Miscellanies::getIndex(string line)
     return stoi(data[3]);
 }
 
- int Miscellanies::destAirportID(string line){
+int Miscellanies::destAirportID(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -206,7 +198,7 @@ int Miscellanies::getIndex(string line)
     return stoi(data[5]);
 }
 
- int Miscellanies::numStops(string line){
+int Miscellanies::numStops(string line){
     vector<string> data;
     stringstream ss(line);
     while(ss.good()){
@@ -222,50 +214,3 @@ int Miscellanies::getIndex(string line)
     }
     return stoi(data[7]);
 }
-
-
-// Might not need this anymore since we're using a struct in OpenFlights
-/*void Miscellanies::insert(const string & filename){
-    string txt;
-    ifstream myfile(filename);
-    
-    int ID;
-    string Airport_Name;
-    string city;
-    string country;
-    long double latitude;
-    long double longitude;
-    while(getLine(myfile,txt)){
-        ID = getIndex(txt);
-        Airport_Name = airport_name(txt);
-        city = airport_city(txt);
-        country = airport_country(txt);
-        latitude = airport_latitude(txt);
-        longitude = airport_longitude(txt);
-        airport_map.insert(ID,make_tuple(Airport_Name,city_,country,latitude,longitude));
-    }
-    
-    myfile.close();
-}*/
-
-/*void Miscellanies::calculateDistances(){
-    double x = (double) rand() / RAND_MAX;
-    double y = (double) rand() / RAND_MAX;
-    for (unsigned long idx = 0; idx < coordinates.size(); idx++){
-        distances_.push_back(distance(x, y, coordinates[idx].first, coordinates[idx].second));
-    }
-}*/
-
-/*int **Miscellanies::createGrid(const string & filename){
-    string line;
-    ifstream myfile (filename);
-    if (myfile.is_open() == true){
-    
-    }
-
-    for (int idx = 0; idx < Flights_Available.size(); idx++){
-        
-    }
-    int **arr;
-    return arr;
-}*/
