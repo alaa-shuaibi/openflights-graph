@@ -18,7 +18,10 @@ Edge::Edge(AirportID start, AirportID end, long double distance, std::vector<int
     this->end = end;
     this->distance = distance;
     this->airlines = airlines;
-    std::sort(airlines.begin(), airlines.end());
+}
+
+void Edge::insertAirline(int airlineID) {
+    airlines.push_back(airlineID);
 }
 
 AirportID Edge::getStart() {

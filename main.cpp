@@ -27,7 +27,7 @@ int main() {
     std::cout << "size = : " << testRFF.size() << std::endl;
 */  
     int input, start, end, checkPoint;
-    string fileName;
+    string fileAirports, fileRoutes;
     //if invalid input is provided twice, end program
     int toExit = 0;
     
@@ -36,15 +36,18 @@ int main() {
 
     Algorithms algo = Algorithms();
 
-    //std::cout << "Input the name of your (properly formatted) file:";
-    //std::cin >> fileName;
+    std::cout << "Input the name of your (properly formatted) Airports file:";
+    std::cin >> fileAirports;
+    std::cout << "Input the name of your (properly formatted) Routes file:";
+    std::cin >> fileRoutes;
+    
     // this can be repeated for routes/airlines/airports if necessary
     //hardcoded in for now.
 
     //Load File First
-    OpenFlights o;
-    //o.loadData("airports.txt");
-    o.loadRoutes("routes.txt");
+    //OpenFlights o= OpenFlights("airports.txt", "routes.txt");
+    OpenFlights o = OpenFlights(fileAirports, fileRoutes);
+    Graph g = o.getGraph();
     //o.loadEdges(false);
     
     //o.loadRoutes("routes.txt");
@@ -54,13 +57,14 @@ int main() {
     //If Valid, Construct Graph
 
     do{
+        std::cout << "g.getAllAirports().size() = " << g.getAllAirports().size() << std::endl;
         std:: cout << "\nType 1, 2, 3, or 4 for the following:\n1 - BFS\n2 - Dijkstra's Algorithm\n3 - Landmark Path\n4 - Input new File\n";
     
         std::cin >> input;
 
         if(input == 1){ //call BFS
-            //std::cout << "BFS call" << std::endl;
-            //auto airportVec = algo.BFS(g);
+            std::cout << "BFS call" << std::endl;
+            auto airportVec = algo.BFS(g);
             //iterate through and print
             
         }
@@ -70,9 +74,9 @@ int main() {
             std::cout << "Input ending AirportID:";
             std::cin >> end;
             //comment out this line when graph is loaded and uncomment next line
-            std::cout << "Dijkstra Path: algo.Dijkstra(g, " << start << ", " << end << ") = "  << std::endl;
-            
-//          std::cout << "Dijkstra Path: " << algo.Dijkstra(g, start, end) << std::endl;
+            //std::cout << "Dijkstra Path: algo.Dijkstra(g, " << start << ", " << end << ") = "  << std::endl;
+        
+            std::cout << "Dijkstra Path: " << algo.Dijkstra(g, start, end) << std::endl;
         }
         else if(input == 3){ //call Landmark path
             std::cout << "Input starting AirportID:";
@@ -82,13 +86,18 @@ int main() {
             std::cout << "Input checkPoint AirportID:";
             std::cin >> checkPoint;
             //comment out this line when graph is loaded and uncomment next line      
-            std::cout << "Landmark Path: algo.Landmark(g, " << start << ", " << end << ", " << checkPoint << ") = "  << std::endl;
+            //std::cout << "Landmark Path: algo.Landmark(g, " << start << ", " << end << ", " << checkPoint << ") = "  << std::endl;
 
-//            std::cout << "Landmark Path: " << algo.Landmark(g, start, end, checkPoint) << std::endl;
+            std::cout << "Landmark Path: " << algo.Landmark(g, start, end, checkPoint) << std::endl;
         }
         else if(input == 4){
-            std::cout << "Input new file:";
-            std::cin >> fileName;
+            std::cout << "Input new Airports file:";
+            std::cin >> fileAirports;
+            std::cout << "Input new Routes file:";
+            std::cin >> fileRoutes;
+
+            o = OpenFlights(fileAirports, fileRoutes);
+            g = o.getGraph();
             //load files and make new graph, same code as above loop
         }
         else{

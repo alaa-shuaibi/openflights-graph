@@ -1,7 +1,6 @@
 #pragma once
 #include "miscellanies.h"
 #include "algorithms.h"
-#include <map>
 
 using std::ifstream;
 
@@ -11,56 +10,19 @@ using std::ifstream;
 class OpenFlights {
     public:
         /**
-        * Defualt Constructor.
-        */
-        OpenFlights();
-
-        /**
         * Constructor that also loads in the data by calling loadData.
         */
-        OpenFlights(const string & filename, const string & filename2);
         OpenFlights(const string & airports_file, const string & routes_file);
 
         /**
-        * Constructor that also loads in the data by calling loadData.
-        */
-        OpenFlights(const string & airports_file, const string & routes_file, const string & airlines_file);
+         * @return The graph representing the data.
+         */ 
+        Graph getGraph();
 
         /**
-         * Loads data into airportMap and graph;
+         * @return The AirportID of the given airport.
          */
-        void loadData(const string & filename);
-
-        void loadRoutes(const string & filename);
-
-        //void loadAirlines(const string & filename);
-
-        /**
-         * Loads edges into graph. 
-         * If includeAirlines is true, airlines will also be loaded into edges.
-         */
-        void loadEdges(bool includeAirlines);
-
-        /**
-         * Given a starting airport, returns the nearest airport 
-         * that can be traveled to to arrive at the given city. 
-         * 
-         * If no such airport is found, return -1.
-         */
-        int cityFinder(AirportID start, string city);
-
-        /**
-         * Given a starting airport, returns the nearest airport 
-         * that can be traveled to to arrive at the given country. 
-         * 
-         * If no such airport is found, return -1.
-         */
-        int countryFinder(AirportID start, string country);
-
-        /**
-         * @return The number of airports the given airport can travel to and from.
-         */
-        size_t airportNetworkSize(AirportID airport);
+        AirportID getAirportID(string name);
 
         /**
          * Stores data for a specific airport.
@@ -73,30 +35,29 @@ class OpenFlights {
             long double longitude;
         };
 
-
-        struct Route {
-            long int AirlineID;
-            long int ending_AirportID;
-            long int num_stops;
-            long double distance;
-        };
-
-        struct Airline {
-            string Airline_name;
-            string Airline_country;
-        };
-
     private:
         /**
-         * Maps an AirportID to the details of that airport.
+         * Loads airports into graph and airportMap;
          */
-        std::map<AirportID, AirportData> airportMap;
+        void loadAirports(const string & filename);
 
-        std::map<AirportID, Route> routes_;
-
+        /**
+         * Loads edges into graph.
+         */
+        void loadRoutes(const string & filename);
 
         /**
          * A graph to load the aiports in.
          */
         Graph graph;
+
+        /**
+         * Maps an AirportID to the details of that airport.
+         */
+        std::unordered_map<AirportID, AirportData> airportMap;
+
+        /**
+         * Maps the name of an airport to its corresponding AirportID.
+         */
+        std::unordered_map<string, AirportID> nameToAirportID;
 };
