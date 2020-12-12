@@ -1,0 +1,3 @@
+4049,"University of Illinois Willard Airport","Champaign","United States","CMI","KCMI",40.03919983,-88.27809906,755,-6,"A","America/Chicago","airport","OurAirports"
+3830,"Chicago O'Hare International Airport","Chicago","United States","ORD","KORD",41.9786,-87.9048,672,-6,"A","America/Chicago","airport","OurAirports"
+3469,"San Francisco International Airport","San Francisco","United States","SFO","KSFO",37.61899948120117,-122.375,13,-8,"A","America/Los_Angeles","airport","OurAirports"
