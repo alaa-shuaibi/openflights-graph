@@ -19,6 +19,11 @@ AirportID OpenFlights::getAirportID(string name) {
     return -1;
 }
 
+
+string OpenFlights::getAirportName(AirportID a){
+    return "";
+}
+
 void OpenFlights::loadAirports(const string & filename){
     string txt;
     ifstream myfile(filename);
