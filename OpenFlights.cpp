@@ -33,6 +33,7 @@ void OpenFlights::loadAirports(const string & filename){
         airports.push_back(ID);
         AirportData point = {name, city, country, latitude, longitude};
         airportMap.insert({ID, point});
+        nameToAirportID[name] = ID;
     }
 
     graph = Graph(airports);
