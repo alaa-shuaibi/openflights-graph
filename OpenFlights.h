@@ -55,4 +55,9 @@ class OpenFlights {
          * Maps an AirportID to the details of that airport.
          */
         std::unordered_map<AirportID, AirportData> airportMap;
+
+        /**
+         * Maps the name of an airport to its corresponding AirportID.
+         */
+        std::unordered_map<string, AirportID> nameToAirportID;
 };

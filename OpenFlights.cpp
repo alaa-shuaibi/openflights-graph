@@ -9,7 +9,13 @@ Graph OpenFlights::getGraph() {
     return graph;
 }
 
-AirportID OpenFlights::getAirportID(string name) {}
+AirportID OpenFlights::getAirportID(string name) {
+    if (nameToAirportID.find(name) != nameToAirportID.end()) {
+        return nameToAirportID[name];
+    }
+
+    return -1;
+}
 
 void OpenFlights::loadAirports(const string & filename){
     string txt;
@@ -27,6 +33,7 @@ void OpenFlights::loadAirports(const string & filename){
         airports.push_back(ID);
         AirportData point = {name, city, country, latitude, longitude};
         airportMap.insert({ID, point});
+        nameToAirportID[name] = ID;
     }
 
     graph = Graph(airports);
