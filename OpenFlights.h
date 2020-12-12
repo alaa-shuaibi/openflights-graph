@@ -21,9 +21,34 @@ class OpenFlights {
         Graph getGraph();
 
         /**
-         * @return The AirportID of the given airport.
+         * @return The AirportID of the given airport. If the given airport doesn't exist, return -1.
          */
-        AirportID getAirportID(string name);
+        AirportID getAirportID(string airportName);
+
+        /**
+         * @return The name of the airport given the AirportID. If the given airport doesn't exist, return "NULL".
+         */
+        string getAirportName(AirportID airportID);
+
+        /**
+         * @return The city and country of the airport given the AirportID. If the given airport doesn't exist, return "NULL".
+         */
+        string getAirportLocation(AirportID airportID);
+
+        /**
+         * @return The coordinates of the airport given the AirportID. If the given airport doesn't exist, return "NULL".
+         */
+        string getAirportCoords(AirportID airportID);
+
+        /**
+         * @return All data of the given airport. If the given airport doesn't exist, return "NULL".
+         */
+        string getAllAirportData(AirportID airportID);
+
+        /**
+         * Converts a given path in the form of a vector to a string.
+         */
+        string pathToString(std::vector<AirportID> path);
 
         /**
          * Stores data for a specific airport.
@@ -53,12 +78,12 @@ class OpenFlights {
         Graph graph;
 
         /**
-         * Maps an AirportID to the details of that airport.
-         */
-        std::unordered_map<AirportID, AirportData> airportMap;
-
-        /**
          * Maps the name of an airport to its corresponding AirportID.
          */
         std::unordered_map<string, AirportID> nameToAirportID;
+
+        /**
+         * Maps an AirportID to the details of that airport.
+         */
+        std::unordered_map<AirportID, AirportData> airportMap;
 };

@@ -43,14 +43,14 @@ class Algorithms {
 
         /**
          * Given two airports start and end, finds the shortest path from start to end.
-         * @return A string represent the shortest path.
+         * @return A vector representing the shortest path.
          */
-        std::string Dijkstra(Graph g, AirportID start, AirportID end);
+        std::vector<AirportID> Dijkstra(Graph g, AirportID start, AirportID end);
 
         /**
          * Given two airports start and end, finds the shortest path from start to end through 
          * a checkpoint airport.
-         * @return A string represent the shortest path.
+         * @return A vector representing the shortest path.
          */ 
-        std::string Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint);
+        std::vector<AirportID> Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint);
 };

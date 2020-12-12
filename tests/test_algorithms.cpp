@@ -130,9 +130,9 @@ TEST_CASE("Dijkstra returns the correct path for a simple example.") {
 
     Graph g = Graph(airports);
 
-    std::string path = algo.Dijkstra(g, 1, 10);
+    std::vector<AirportID> path = algo.Dijkstra(g, 1, 10);
 
-    REQUIRE(path == "Path doesn't exist.");
+    REQUIRE(path.empty());
 
     g.insertEdge(1, 2, 1);
     g.insertEdge(2, 3, 2);
@@ -146,8 +146,13 @@ TEST_CASE("Dijkstra returns the correct path for a simple example.") {
     g.insertEdge(9, 10, 2);
 
     path = algo.Dijkstra(g, 1, 10);
-
-    REQUIRE(path == "1->2->4->6->9->10");
+    
+    REQUIRE(path[0] == 1);
+    REQUIRE(path[1] == 2);
+    REQUIRE(path[2] == 4);
+    REQUIRE(path[3] == 6);
+    REQUIRE(path[4] == 9);
+    REQUIRE(path[5] == 10);
 }
 
 TEST_CASE("Dijkstra returns the correct path for a more complex example.") {
@@ -174,13 +179,16 @@ TEST_CASE("Dijkstra returns the correct path for a more complex example.") {
     g.insertEdge(6, 4, 40);
     g.insertEdge(7, 1, 20);
 
-    std::string path = algo.Dijkstra(g, 1, 3);
+    std::vector<AirportID> path1 = algo.Dijkstra(g, 1, 3);
 
-    std::string path2 = algo.Dijkstra(g, 8, 4);
+    std::vector<AirportID> path2 = algo.Dijkstra(g, 8, 4);
+    
+    REQUIRE(path1[0] == 1);
+    REQUIRE(path1[1] == 2);
+    REQUIRE(path1[2] == 6);
+    REQUIRE(path1[3] == 3);
 
-     REQUIRE(path == "1->2->6->3");
-
-     REQUIRE(path2 == "Path doesn't exist.");
+    REQUIRE(path2.empty());
 
 }
 
@@ -210,8 +218,13 @@ TEST_CASE("Dijkstra returns the correct path for another complex example.") {
     g.insertEdge(6, 0, .58);
     g.insertEdge(6, 4, .93);
 
-    std::string path = algo.Dijkstra(g, 0, 6);
-    REQUIRE(path == "0->2->7->3->6");
+    std::vector<AirportID> path = algo.Dijkstra(g, 0, 6);
+
+    REQUIRE(path[0] == 0);
+    REQUIRE(path[1] == 2);
+    REQUIRE(path[2] == 7);
+    REQUIRE(path[3] == 3);
+    REQUIRE(path[4] == 6);
 }
 
 TEST_CASE("Landmark returns the correct path for a simple example.") {
@@ -225,9 +238,9 @@ TEST_CASE("Landmark returns the correct path for a simple example.") {
 
     Graph g = Graph(airports);
 
-    std::string path = algo.Landmark(g, 1, 10, 2);
+    std::vector<AirportID> path = algo.Landmark(g, 1, 10, 2);
 
-    REQUIRE(path == "Path doesn't exist.");
+    REQUIRE(path.empty());
 
     g.insertEdge(1, 2, 1);
     g.insertEdge(2, 3, 2);
@@ -242,5 +255,9 @@ TEST_CASE("Landmark returns the correct path for a simple example.") {
 
     path = algo.Landmark(g, 1, 10, 7);
 
-    REQUIRE(path == "1->2->4->7->10");
+    REQUIRE(path[0] == 1);
+    REQUIRE(path[1] == 2);
+    REQUIRE(path[2] == 4);
+    REQUIRE(path[3] == 7);
+    REQUIRE(path[4] == 10);
 }

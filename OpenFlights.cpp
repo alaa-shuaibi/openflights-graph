@@ -19,6 +19,52 @@ AirportID OpenFlights::getAirportID(string name) {
     return -1;
 }
 
+string OpenFlights::getAirportName(AirportID airportID) {
+    if (airportMap.find(airportID) != airportMap.end()) {
+        return airportMap[airportID].name;
+    }
+
+    return "NULL";
+}
+
+string OpenFlights::getAirportLocation(AirportID airportID) {
+    if (airportMap.find(airportID) != airportMap.end()) {
+        return airportMap[airportID].city + ", " + airportMap[airportID].country;
+    }
+
+    return "NULL";
+}
+
+string OpenFlights::getAirportCoords(AirportID airportID) {
+    if (airportMap.find(airportID) != airportMap.end()) {
+        return "(" + std::to_string(airportMap[airportID].latitude) + ", " + std::to_string(airportMap[airportID].latitude) + ")";
+    }
+
+    return "NULL";
+}
+
+string OpenFlights::getAllAirportData(AirportID airportID) {
+    if (airportMap.find(airportID) != airportMap.end()) {
+        return getAirportName(airportID) + ", " + getAirportLocation(airportID) + ", " + getAirportCoords(airportID);
+    }
+
+    return "NULL";
+}
+
+string OpenFlights::pathToString(std::vector<AirportID> path) {
+    if (path.empty()) {
+        return "Path doesn't exist.";
+    } else if (path.size() == 1) {
+        return "You have arrived at your destination!";
+    }
+
+    string ret = airportMap[path[0]].name + " ";
+
+    for (size_t i = 1; i < path.size(); i++) {
+        ret += "-> " + airportMap[path[i]].name;
+    }
+}
+
 void OpenFlights::loadAirports(const string & filename){
     string txt;
     ifstream myfile(filename);
@@ -27,7 +73,6 @@ void OpenFlights::loadAirports(const string & filename){
     while(getline(myfile,txt)) {
         AirportID ID = Miscellanies::getIndex(txt);
         string name = Miscellanies::airport_name(txt);
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c){return std::tolower(c);});
         string city = Miscellanies::airport_city(txt);
         string country = Miscellanies::airport_country(txt);
         long double latitude = Miscellanies::airport_latitude(txt);
@@ -36,6 +81,7 @@ void OpenFlights::loadAirports(const string & filename){
         airports.push_back(ID);
         AirportData point = {name, city, country, latitude, longitude};
         airportMap.insert({ID, point});
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c){return std::tolower(c);});
         nameToAirportID[name] = ID;
     }
 

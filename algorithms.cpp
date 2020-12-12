@@ -80,9 +80,12 @@ std::vector<AirportID> Algorithms::DFS(Graph g, AirportID start, std::unordered_
     return path;
 }
 
-std::string Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {    
+std::vector<AirportID> Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {    
+    std::vector<AirportID> path;
+
     if (start == end) {
-        return "You have arrived at your destination!";
+        path.push_back(start);
+        return path;
     }
 
     std::priority_queue<std::pair<double, AirportID>, std::vector<std::pair<double, AirportID>>, std::greater<std::pair<double, AirportID>>> q;
@@ -121,39 +124,42 @@ std::string Algorithms::Dijkstra(Graph g, AirportID start, AirportID end) {
 
     // Checks if end was found.
     if (previous.find(end) == previous.end()) {
-        return "Path doesn't exist.";
+        return path;
     }
 
-    // Loads path into string.
-    std::string path = std::to_string(end);
+    // Loads path into vector.
+    path.push_back(end);
     curr = end;
     while (curr != start) {
-        path = std::to_string(previous[curr]) + "->" + path;
+        path.push_back(previous[curr]);
         curr = previous[curr];
     }
+    std::reverse(path.begin(), path.end());
 
     return path;
 }
 
-std::string Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {
+std::vector<AirportID> Algorithms::Landmark(Graph g, AirportID start, AirportID end, AirportID checkpoint) {
     if (start == checkpoint || end == checkpoint) {
         return Dijkstra(g, start, end);
     }
 
-    std::string path1 = Dijkstra(g, start, checkpoint);
+    std::vector<AirportID> path1 = Dijkstra(g, start, checkpoint);
     
-    if (path1 == "Path doesn't exist.") {
+    if (path1.empty()) {
         return path1;
     }
-    std::string path2 = Dijkstra(g, checkpoint, end);
+    std::vector<AirportID> path2 = Dijkstra(g, checkpoint, end);
 
-    if (path2 == "Path doesn't exist.") {
+    if (path2.empty()) {
         return path2;
     }
 
-    int cpStringSize = std::to_string(checkpoint).size();
+    for (size_t i = 1; i < path2.size(); i++) {
+        path1.push_back(path2[i]);
+    }
 
-    return path1 + "->" + path2.substr(cpStringSize + 2);
+    return path1;
 }
 
 
