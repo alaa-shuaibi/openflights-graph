@@ -32,8 +32,9 @@ class Miscellanies {
          * This function takes in a single line from airports.txt and returns the unique airport identifier
         */
         static int getIndex(string line);
-        /*
-            This function takes in a single line from airports.txt and returns the name of the airport
+        
+        /**
+         * This function takes in a single line from airports.txt and returns the name of the airport
         */
         static string airport_name(string line);
         
@@ -68,5 +69,4 @@ class Miscellanies {
          * of the destination aiport.
         */
         static int destAirportID(string line);
-
 };
