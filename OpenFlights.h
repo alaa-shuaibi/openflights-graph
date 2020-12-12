@@ -44,7 +44,7 @@ class OpenFlights {
         /**
          * Loads edges into graph.
          */
-        void loadRoutes(const string & filename);
+        void loadRoutes(const string & filename2);
 
         /**
          * A graph to load the aiports in.

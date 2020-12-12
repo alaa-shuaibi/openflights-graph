@@ -38,23 +38,28 @@ void OpenFlights::loadAirports(const string & filename){
 
     graph = Graph(airports);
     
-    myfile.close();
+    //myfile.close();
 }
 
 void OpenFlights::loadRoutes(const string & filename){
+    
+    //std::cout <<"entering loadRoutes" <<std::endl;
     string txt;
     ifstream myfile(filename);
 
     while(getline(myfile,txt)){
+        
+    //std::cout <<"not entering while loop" <<std::endl;
         AirportID start = Miscellanies::sourceAirportID(txt);
         AirportID end = Miscellanies::destAirportID(txt);
-        
         if (start == -1 || end == -1) {
+            
+    std::cout <<"within if start:" << start << " end: " << end <<std::endl;
             continue;
         }
 
         long double distance = Miscellanies::distance(airportMap[start].latitude, airportMap[start].longitude, airportMap[end].latitude, airportMap[end].longitude);
-        
+
         graph.insertEdge(start, end, distance);
     }
 
