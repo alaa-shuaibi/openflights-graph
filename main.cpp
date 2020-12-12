@@ -31,7 +31,7 @@ int main() {
     //if invalid input is provided twice, end program
     int toExit = 0;
     
-    std::cout << "Welcome to a Graph-Based implementation of Breadth First Traversal (BFS), Dijkstra's Shortest Path, and Landmark Path Algorithms for the OpenFlights dataset\n\n";
+    std::cout << "Welcome to a Graph-Based implementation of Depth-First Search(DFS), Breadth First Traversal (BFS), Dijkstra's Shortest Path, and Landmark Path Algorithms for the OpenFlights dataset\n\n";
     std::cout <<"Authors (listed alphabetically): Alaa Shuaibi (ashuai6), Chidambara Anagani (canaga2), Praneeth Mekapati (pm14), and Rahul Vasanth (rvasant2)\n";
 
     Algorithms algo = Algorithms();
@@ -58,7 +58,7 @@ int main() {
 
     do{
         std::cout << "g.getAllAirports().size() = " << g.getAllAirports().size() << std::endl;
-        std:: cout << "\nType 1, 2, 3, or 4 for the following:\n1 - BFS\n2 - Dijkstra's Algorithm\n3 - Landmark Path\n4 - Input new File\n";
+        std:: cout << "\nType 0, 1, 2, 3, or 4 for the following:\n0 - DFS\n1 - BFS\n2 - Dijkstra's Algorithm\n3 - Landmark Path\n4 - Input new File\n";
     
         std::cin >> input;
         if(input == 0){ //call DFS
@@ -106,7 +106,7 @@ int main() {
             std::cout << "Invalid Input" << std::endl;
             toExit++;
         }
-
+        
     }while(toExit < 2); //allow one invalid input
 
     return 0;
