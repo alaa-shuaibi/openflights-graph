@@ -77,16 +77,16 @@ int main() {
             //std::cout << "Dijkstra Path: algo.Dijkstra(g, " << start << ", " << end << ") = "  << std::endl;
             auto a = g.getAllAirports();
             
-            for(int i = 0; i < (int)a.size(); i++){
+            /*for(int i = 0; i < (int)a.size(); i++){
                 std::cout << a[i] << std::endl;
-            }
+            }*/
             
             auto e = g.getAllEdges();
             std::cout << "e.size(): " << e.size() << std::endl;
 
-            for(int i = 0; i < (int)e.size(); i++){
+            /*for(int i = 0; i < (int)e.size(); i++){
                 std::cout << "e[i].getStart(): " << e[i].getStart() << "e[i].getEnd(): " << e[i].getEnd() << std::endl;
-            }
+            }*/
 
             std::cout << "Dijkstra Path: " << algo.Dijkstra(g, start, end) << std::endl;
         }
