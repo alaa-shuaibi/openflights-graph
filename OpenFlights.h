@@ -51,6 +51,13 @@ class OpenFlights {
         string pathToString(std::vector<AirportID> path);
 
         /**
+         * @return The name of the given airport.
+         */
+        string getAirportName(AirportID);
+
+        
+
+        /**
          * Stores data for a specific airport.
          */
         struct AirportData {
