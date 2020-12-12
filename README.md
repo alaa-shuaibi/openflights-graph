@@ -30,14 +30,21 @@ Steps:
     otherwise do it once
 
 Airport Format: 
-{3469,"San Francisco International Airport","San Francisco","United States","SFO","KSFO",37.61899948120117,-122.375,13,-8,"A","America/Los_Angeles","airport","OurAirports"}
+{3469,"San Francisco International Airport","San Francisco","United States","SFO","KSFO",37.61,-122.37,13,-8,"A","America/Los_Angeles","airport","OurAirports"}
+
+*For more clarification look at openflights.org/data.html
 ID: 3469
 AirportName: San Francisco International Airport
 City: San Francisco
-Country: California
+Country: United States
 Latitude: 37.61899948120117
 Longitude: -122.375
 
-Route Format: {AA,24,SFO,3469,ORD,3830,,0,738} SA = starting airport, EA = ending airport
-                          SA       EA
+Route Format: {AA,24,SFO,3469,ORD,3830,,0,738}
+
+*For more clarification look at openflights.org/data.html
+Airline Name = AA (American Airlines) 
+SA = starting airport - 3469
+EA = ending airport - 3830
+                          
 
