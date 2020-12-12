@@ -8,7 +8,7 @@ int main() {
     int toExit = 0;
     
     std::cout << "Welcome to a Graph-Based implementation of Breadth First Traversal (BFS), Depth First Search (DFS), Dijkstra’s Algorithm, and Landmark Path for the OpenFlights dataset.\n\n";
-    std::cout <<"Authors (listed alphabetically): Alaa Shuaibi (ashuai6), Chidambara Anagani (canaga2), Praneeth Mekapati (pm14), and Rahul Vasanth (rvasant2)\n";
+    std::cout << "Authors (listed alphabetically): Alaa Shuaibi (ashuai6), Chidambara Anagani (canaga2), Praneeth Mekapati (pm14), and Rahul Vasanth (rvasant2)\n";
     std::cout << std::endl;
 
     //user input for filenames
@@ -35,13 +35,9 @@ int main() {
         std::cout << std::endl;
 
         if (input == 0) { // Calls BFS Traversal
-            auto airportVec = algo.BFS(g);
-
             // Can be commented out for long textfiles.
             std::cout << "BFS Traversal: " << o.pathToString(algo.BFS(g)) << std::endl;
         } else if (input == 1) { // Calls DFS Traversal
-            auto airportVec = algo.DFS(g);
-
             // Can be commented out for long textfiles.
             std::cout << "DFS Traversal: " << o.pathToString(algo.DFS(g)) << std::endl;
         } else if (input == 2) { // Calls Dijkstra's Algorithm
