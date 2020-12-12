@@ -60,11 +60,8 @@ testgraph: output_msg tests/catch/catchmain.cpp tests/test_graph.cpp graph.o edg
 testalgo: output_msg tests/catch/catchmain.cpp tests/test_algorithms.cpp algorithms.o graph.o edge.o
 	$(LD) tests/catch/catchmain.cpp tests/test_algorithms.cpp algorithms.o graph.o edge.o $(LDFLAGS) -o testalgo
 
-testopenflights: output_msg tests/catch/catchmain.cpp tests/test_OpenFlights.cpp OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o
-	$(LD) tests/catch/catchmain.cpp tests/test_OpenFlights.cpp OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o $(LDFLAGS) -o testopenflights
-
-test: output_msg tests/catch/catchmain.cpp tests/test_miscellanies.cpp tests/test_graph.cpp tests/test_algorithms.cpp tests/test_OpenFlights.cpp OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o
-	$(LD) tests/catch/catchmain.cpp tests/test_miscellanies.cpp tests/test_graph.cpp tests/test_algorithms.cpp tests/test_OpenFlights.cpp OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o $(LDFLAGS) -o test
+test: output_msg tests/catch/catchmain.cpp tests/test_miscellanies.cpp tests/test_graph.cpp tests/test_algorithms.cpp OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o
+	$(LD) tests/catch/catchmain.cpp tests/test_miscellanies.cpp tests/test_graph.cpp tests/test_algorithms.cpp OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o $(LDFLAGS) -o test
 
 clean:
 	-rm -f *.o $(EXENAME) test
