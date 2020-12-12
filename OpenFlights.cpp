@@ -63,6 +63,8 @@ string OpenFlights::pathToString(std::vector<AirportID> path) {
     for (size_t i = 1; i < path.size(); i++) {
         ret += "-> " + airportMap[path[i]].name;
     }
+
+    return ret;
 }
 
 void OpenFlights::loadAirports(const string & filename){
