@@ -1,6 +1,7 @@
 #pragma once
 #include "miscellanies.h"
 #include "algorithms.h"
+#include <algorithm>
 
 using std::ifstream;
 
@@ -44,7 +45,7 @@ class OpenFlights {
         /**
          * Loads edges into graph.
          */
-        void loadRoutes(const string & filename2);
+        void loadRoutes(const string & filename);
 
         /**
          * A graph to load the aiports in.

@@ -1,18 +1,123 @@
 #include "catch/catch.hpp"
 #include "../algorithms.h"
 
-/*
 TEST_CASE("BFS works on a simple graph.") {
-    SECTION("BFS traverses through the entire component containing start in the correct order.") {}
+    Algorithms algo = Algorithms();
 
-    SECTION("BFS traverses through the entire graph in the correct order.") {}
+    std::vector<AirportID> airports;
+
+    for (int i = 1; i <= 10; i++) {
+        airports.push_back(i);
+    }
+
+    Graph g = Graph(airports);
+
+    g.insertEdge(1, 2, 1);
+    g.insertEdge(2, 3, 2);
+    g.insertEdge(2, 4, 3);
+    g.insertEdge(2, 5, 4);
+    g.insertEdge(4, 6, 10);
+    g.insertEdge(4, 7, 9);
+    g.insertEdge(4, 8, 1);
+
+    SECTION("BFS traverses through the entire component containing start in the correct order.") {
+        std::unordered_map<AirportID, bool> visited;
+        std::vector<AirportID> path;
+
+        path = algo.BFS(g, 1, visited, path);
+
+        REQUIRE(path.size() == 8);
+
+        REQUIRE(path[0] == 1);
+        REQUIRE(path[1] == 2);
+        REQUIRE(path[2] == 3);
+        REQUIRE(path[3] == 4);
+        REQUIRE(path[4] == 5);
+        REQUIRE(path[5] == 6);
+        REQUIRE(path[6] == 7);
+        REQUIRE(path[7] == 8);
+    }
+
+    g.insertEdge(6, 9, 2);
+    g.insertEdge(7, 10, 30);
+    g.insertEdge(9, 10, 2);
+
+    SECTION("BFS traverses through the entire graph in the correct order.") {
+        std::unordered_map<AirportID, bool> visited;
+        std::vector<AirportID> path;
+
+        path = algo.BFS(g);
+
+        REQUIRE(path.size() == 10);
+
+        std::string pathAsString;
+
+        for (size_t i = 0; i < path.size(); i++) {
+            pathAsString += std::to_string(path[i]);
+        }
+
+        REQUIRE(pathAsString == "12543876109");
+    }
 }
 
 TEST_CASE("DFS works on a simple graph.") {
-    SECTION("DFS traverses through the entire component containing start in the correct order.") {}
+    Algorithms algo = Algorithms();
 
-    SECTION("DFS traverses through the entire graph in the correct order.") {}
-}*/
+    std::vector<AirportID> airports;
+
+    for (int i = 1; i <= 10; i++) {
+        airports.push_back(i);
+    }
+
+    Graph g = Graph(airports);
+
+    g.insertEdge(1, 2, 1);
+    g.insertEdge(2, 3, 2);
+    g.insertEdge(2, 4, 3);
+    g.insertEdge(2, 5, 4);
+    g.insertEdge(4, 6, 10);
+    g.insertEdge(4, 7, 9);
+    g.insertEdge(4, 8, 1);
+
+    SECTION("DFS traverses through the entire component containing start in the correct order.") {
+        std::unordered_map<AirportID, bool> visited;
+        std::vector<AirportID> path;
+
+        path = algo.DFS(g, 1, visited, path);
+
+        REQUIRE(path.size() == 8);
+
+        REQUIRE(path[0] == 1);
+        REQUIRE(path[1] == 2);
+        REQUIRE(path[2] == 5);
+        REQUIRE(path[3] == 4);
+        REQUIRE(path[4] == 8);
+        REQUIRE(path[5] == 7);
+        REQUIRE(path[6] == 6);
+        REQUIRE(path[7] == 3);
+    }
+
+    g.insertEdge(6, 9, 2);
+    g.insertEdge(7, 10, 30);
+    g.insertEdge(9, 10, 2);
+
+    SECTION("DFS traverses through the entire graph in the correct order.") {
+        std::unordered_map<AirportID, bool> visited;
+        std::vector<AirportID> path;
+
+        path = algo.DFS(g);
+
+        REQUIRE(path.size() == 10);
+
+        std::string pathAsString;
+
+        for (size_t i = 0; i < path.size(); i++) {
+            pathAsString += std::to_string(path[i]);
+        }
+
+        REQUIRE(pathAsString == "12346910785");
+    }
+}
 
 TEST_CASE("Dijkstra returns the correct path for a simple example.") {
     Algorithms algo = Algorithms();
@@ -106,7 +211,6 @@ TEST_CASE("Dijkstra returns the correct path for another complex example.") {
     g.insertEdge(6, 4, .93);
 
     std::string path = algo.Dijkstra(g, 0, 6);
-    std::cout << algo.Dijkstra(g, 5, 6) << std::endl;
     REQUIRE(path == "0->2->7->3->6");
 }
 
