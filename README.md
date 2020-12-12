@@ -1,6 +1,6 @@
 # canaga2-ashuai6-rvasant2-pm14
 
-#Final Project
+Final Project
 
 Summary: This program implements graph-based traversal algorithms on the OpenFlights airport and routes datasets in C++. https://openflights.org/data.html
 
