@@ -61,7 +61,7 @@ string OpenFlights::pathToString(std::vector<AirportID> path) {
     string ret = airportMap[path[0]].name + " ";
 
     for (size_t i = 1; i < path.size(); i++) {
-        ret += "-> " + airportMap[path[i]].name;
+        ret += " -> " + airportMap[path[i]].name;
     }
 
     return ret;

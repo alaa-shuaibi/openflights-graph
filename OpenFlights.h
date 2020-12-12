@@ -50,10 +50,6 @@ class OpenFlights {
          */
         string pathToString(std::vector<AirportID> path);
 
-
-
-        
-
         /**
          * Stores data for a specific airport.
          */
