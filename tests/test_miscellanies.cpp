@@ -4,8 +4,8 @@
 #include <fstream>
 
 TEST_CASE("We get the basic airport information that is important") {
-    Miscellanies ms = Miscellanies();
-    std::ifstream myfile("airports.txt");
+    //Miscellanies ms = Miscellanies();
+    std::ifstream myfile("tinyAirport.txt");
     int ID;
     string name_;
     string city_;
@@ -13,42 +13,32 @@ TEST_CASE("We get the basic airport information that is important") {
     long double lat;
     long double longi;
     string txt;
-    int cnt = 0;
-    while (std::getline(myfile, txt) && cnt < 10){
-        ID = ms.getIndex(txt);
-        name_ = ms.airport_name(txt);
-        city_ = ms.airport_city(txt);
-        country_ = ms.airport_country(txt);
-        lat = ms.airport_latitude(txt);
-        longi = ms.airport_longitude(txt);
-        //std::cout << ID << " " << name_ << " " << city_ << " " << country_ << " " << lat << " " << longi << " " << std::endl;
-        cnt++;
-    }
+    std::getline(myfile, txt);
+    ID = Miscellanies::getIndex(txt);
+    name_ = Miscellanies::airport_name(txt);
+    city_ = Miscellanies::airport_city(txt);
+    country_ = Miscellanies::airport_country(txt);
+    lat = Miscellanies::airport_latitude(txt);
+    longi = Miscellanies::airport_longitude(txt);
+
+
+    REQUIRE(ID == 4049);
+    REQUIRE(name_ == "\"University of Illinois Willard Airport\"");
+    REQUIRE(city_ == "\"Champaign\"");
+    REQUIRE(country_ == "\"United States\"");
+    REQUIRE(lat == 40.03919983);
+    REQUIRE(longi == -88.27809906);
 }
 
 TEST_CASE("Calculate distances through lat & long") {
-    Miscellanies ms = Miscellanies();
-    std::ifstream myfile("airports.txt");
-    int idx_1 = (std::rand() % 10) + 1;
-    int idx_2 = (std::rand() % 20) + 1;
-    long double lat_1;
-    long double lat_2;
-    long double longi_1;
-    long double longi_2;
-    string txt;
-    int cnt = 1;
-    while (std::getline(myfile, txt) && cnt <= 20){
-        if (cnt == idx_1){
-            lat_1 = ms.airport_latitude(txt);
-            longi_1 = ms.airport_longitude(txt);
-            //std::cout << cnt << " " << lat_1 << " " << longi_1 << " " << std::endl;
-        }
-        if (cnt == idx_2){
-            lat_2 = ms.airport_latitude(txt);
-            longi_2 = ms.airport_longitude(txt);
-            //std::cout << cnt << " " << lat_2 << " " << longi_2 << " " << std::endl;
-        }
-        cnt++;
-    }
-    //std::cout << ms.distance(lat_1, longi_1, lat_2, longi_2) << std::endl;
+    
+    long double lat_1 = -6.0985;
+    long double lat_2 = -4.8674;
+    long double longi_1 = 45.923;
+    long double longi_2 = 143.38679;
+
+    long double ans = Miscellanies::distance(lat_1,longi_1,lat_2,longi_2);
+    
+    REQUIRE(std::floor(ans) == std::floor(10771.37));
+    
 }
