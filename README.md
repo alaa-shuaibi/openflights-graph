@@ -1,11 +1,12 @@
 # canaga2-ashuai6-rvasant2-pm14
-Final Project
 
-Warning: Use of EWS Machine recommended. Make sure to scroll up to see output as the program continually takes user input to run different algorithms, traversals, or read new files.
+#Final Project
 
-Summary: This program implements graph-based traversal algorithms on the OpenFlights airport and routes datasets. https://openflights.org/data.html
+Summary: This program implements graph-based traversal algorithms on the OpenFlights airport and routes datasets in C++. https://openflights.org/data.html
 
 Goals: Find the shortest paths between two cities or countries through air travel. Traveling paths include Djikstra, Landmark, and Breadth-First Search (BFS) to help users travel to  other places in the world.
+
+Warning: Use of EWS Machine recommended. Make sure to scroll up to see output as the program continually takes user input to run different algorithms, traversals, or read new files.
 
 Steps:
 
