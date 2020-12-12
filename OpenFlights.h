@@ -26,6 +26,13 @@ class OpenFlights {
         AirportID getAirportID(string name);
 
         /**
+         * @return The name of the given airport.
+         */
+        string getAirportName(AirportID);
+
+        
+
+        /**
          * Stores data for a specific airport.
          */
         struct AirportData {

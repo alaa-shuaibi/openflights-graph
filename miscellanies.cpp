@@ -1,4 +1,6 @@
 #include "miscellanies.h"
+#include <iostream>
+#include <typeinfo>
 
 
  bool Miscellanies::extractDouble(string txt){
@@ -161,12 +163,13 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-    if (extractInt(data[1]) == true){
-        return stoi(data[1]);
+    string output = data[1];
+    for (unsigned long i = 0; i < output.size(); i++){
+        if (isdigit(output[i]) == false){
+            return -1;
+        }
     }
-    else{
-        return -1;
-    }
+    return stoi(data[1]);
 }
 
  int Miscellanies::sourceAirportID(string line){
@@ -177,12 +180,13 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-    if (extractInt(data[3]) == true){
-        return stoi(data[3]);
+    string output = data[3];
+    for (unsigned long i = 0; i < output.size(); i++){
+        if (isdigit(output[i]) == false){
+            return -1;
+        }
     }
-    else{
-        return -1;
-    }
+    return stoi(data[3]);
 }
 
  int Miscellanies::destAirportID(string line){
@@ -193,13 +197,13 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-
-    if (extractInt(data[5]) == true){
-        return stoi(data[5]);
+    string output = data[5];
+    for (unsigned long i = 0; i < output.size(); i++){
+        if (isdigit(output[i]) == false){
+            return -1;
+        }
     }
-    else{
-        return -1;
-    }
+    return stoi(data[5]);
 }
 
  int Miscellanies::numStops(string line){
@@ -210,13 +214,13 @@ int Miscellanies::getIndex(string line)
         getline(ss,substring,',');
         data.push_back(substring);
     }
-    
-    if (extractInt(data[7]) == true){
-        return stoi(data[7]);
+   string output = data[7];
+    for (unsigned long i = 0; i < output.size(); i++){
+        if (isdigit(output[i]) == false){
+            return -1;
+        }
     }
-    else{
-        return -1;
-    }
+    return stoi(data[7]);
 }
 
 
