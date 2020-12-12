@@ -1,10 +1,11 @@
 #include "OpenFlights.h"
 
 int main() {
-    //these serve as userInputs. start, end, and checkPoint are used in traversals while input provides user options.
+    // These serve as userInputs. start, end, and checkPoint are used in traversals while input provides user options.
     int input, start, end, checkPoint;
     string fileAirports, fileRoutes;
-    //if invalid input is provided twice, end program
+
+    // If invalid input is provided twice, end program
     int toExit = 0;
     
     std::cout << "Welcome to a Graph-Based implementation of Breadth First Traversal (BFS), Depth First Search (DFS), Dijkstra’s Algorithm, and Landmark Path for the OpenFlights dataset.\n\n";
@@ -41,38 +42,38 @@ int main() {
             // Can be commented out for long textfiles.
             std::cout << "DFS Traversal: " << o.pathToString(algo.DFS(g)) << std::endl;
         } else if (input == 2) { // Calls Dijkstra's Algorithm
-            std::cout << "Input starting AirportID: ";
+            std::cout << "Input Starting AirportID: ";
             std::cin >> start;
             std::cout << o.getAllAirportData(start) << std::endl;
             std::cout << std::endl;
 
-            std::cout << "Input ending AirportID: ";
+            std::cout << "Input Ending AirportID: ";
             std::cin >> end;
             std::cout << o.getAllAirportData(end) << std::endl;
             std::cout << std::endl;
              
             std::cout << "Dijkstra's Path: " << o.pathToString(algo.Dijkstra(g, start, end)) << std::endl;
         } else if (input == 3) { // Calls Landmark Path
-            std::cout << "Input starting AirportID: ";
+            std::cout << "Input Starting AirportID: ";
             std::cin >> start;
             std::cout << o.getAllAirportData(start) << std::endl;
             std::cout << std::endl;
 
-            std::cout << "Input ending AirportID: ";
+            std::cout << "Input Ending AirportID: ";
             std::cin >> end;
             std::cout << o.getAllAirportData(end) << std::endl;
             std::cout << std::endl;
 
-            std::cout << "Input checkPoint AirportID: ";
+            std::cout << "Input CheckPoint AirportID: ";
             std::cin >> checkPoint;
             std::cout << o.getAllAirportData(checkPoint) << std::endl;
             std::cout << std::endl;
 
             std::cout << "Landmark Path: " << o.pathToString(algo.Landmark(g, start, end, checkPoint)) << std::endl;
         } else if (input == 4) { // Replaces current files with new files.
-            std::cout << "Input new Airports file: ";
+            std::cout << "Input New Airports file: ";
             std::cin >> fileAirports;
-            std::cout << "Input new Routes file: ";
+            std::cout << "Input New Routes file: ";
             std::cin >> fileRoutes;
 
             // Replaces the OpenFlights object and creates a new graph.
