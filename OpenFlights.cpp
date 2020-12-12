@@ -45,7 +45,7 @@ string OpenFlights::getAirportCoords(AirportID airportID) {
 
 string OpenFlights::getAllAirportData(AirportID airportID) {
     if (airportMap.find(airportID) != airportMap.end()) {
-        return getAirportName(airportID) + ", " + getAirportLocation(airportID) + ", " + getAirportCoords(airportID);
+        return getAirportName(airportID) + " | " + getAirportLocation(airportID) + " | " + getAirportCoords(airportID);
     }
 
     return "NULL";
@@ -58,7 +58,7 @@ string OpenFlights::pathToString(std::vector<AirportID> path) {
         return "You have arrived at your destination!";
     }
 
-    string ret = airportMap[path[0]].name + " ";
+    string ret = airportMap[path[0]].name;
 
     for (size_t i = 1; i < path.size(); i++) {
         ret += " -> " + airportMap[path[i]].name;

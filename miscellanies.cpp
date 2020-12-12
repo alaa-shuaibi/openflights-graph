@@ -1,6 +1,5 @@
 #include "miscellanies.h"
 
-
 long double Miscellanies::toRadians(const long double degree) 
 { 
     double pi = 2 * acos(0);

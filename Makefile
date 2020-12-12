@@ -1,5 +1,5 @@
 # Source: Final Project Demo GitHub (with some adjustments)
-EXENAME = finalproject
+EXENAME = main
 OBJS = main.o OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
