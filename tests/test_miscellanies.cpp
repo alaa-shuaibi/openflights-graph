@@ -5,20 +5,14 @@
 
 TEST_CASE("Airport Data is properly retrieved.") {
     std::ifstream myfile("tinyAirport.txt");
-    int ID;
-    string name_;
-    string city_;
-    string country_;
-    long double lat;
-    long double longi;
     string txt;
     std::getline(myfile, txt);
-    ID = Miscellanies::getIndex(txt);
-    name_ = Miscellanies::airport_name(txt);
-    city_ = Miscellanies::airport_city(txt);
-    country_ = Miscellanies::airport_country(txt);
-    lat = Miscellanies::airport_latitude(txt);
-    longi = Miscellanies::airport_longitude(txt);
+    int ID = Miscellanies::getIndex(txt);
+    string name_ = Miscellanies::airport_name(txt);
+    string city_ = Miscellanies::airport_city(txt);
+    string country_ = Miscellanies::airport_country(txt);
+    long double lat = Miscellanies::airport_latitude(txt);
+    long double longi = Miscellanies::airport_longitude(txt);
 
     REQUIRE(ID == 4049);
     REQUIRE(name_ == "\"University of Illinois Willard Airport\"");
