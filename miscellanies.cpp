@@ -1,17 +1,5 @@
 #include "miscellanies.h"
-#include <typeinfo>
 
-bool Miscellanies::extractDouble(string txt){
-    istringstream iss(txt);
-    double d;
-    return iss >> d >> ws && iss.eof();
-}
-
-bool Miscellanies::extractInt(string txt){
-    istringstream iss(txt);
-    int d;
-    return iss >> d >> ws && iss.eof();
-}
 
 long double Miscellanies::toRadians(const long double degree) 
 { 
@@ -19,7 +7,7 @@ long double Miscellanies::toRadians(const long double degree)
     long double one_deg = (pi) / 180; 
     return (one_deg * degree); 
 } 
-  
+
 long double Miscellanies::distance(long double latitude0, long double longitude0,  
                      long double latitude1, long double longitude1) 
 {
@@ -114,56 +102,6 @@ long double Miscellanies::airport_longitude(string line)
     return ans;
 } 
 
-int Miscellanies::AirlineIdentifier(string line){
-    vector<string> data;
-    stringstream ss(line);
-    while(ss.good()){
-        string substring;
-        getline(ss,substring,',');
-        data.push_back(substring);
-    }
-    return stoi(data[0]);
-}
-
-string Miscellanies::AirlineName(string line){
-    vector<string> data;
-    stringstream ss(line);
-    while(ss.good()){
-        string substring;
-        getline(ss,substring,',');
-        data.push_back(substring);
-    }
-    return data[1];
-}
-
-string Miscellanies::AirlineCountry(string line){
-    vector<string> data;
-    stringstream ss(line);
-    while(ss.good()){
-        string substring;
-        getline(ss,substring,',');
-        data.push_back(substring);
-    }
-    return data[6];
-}
-
-int Miscellanies::getAirlineID(string line){
-    vector<string> data;
-    stringstream ss(line);
-    while(ss.good()){
-        string substring;
-        getline(ss,substring,',');
-        data.push_back(substring);
-    }
-    string output = data[1];
-    for (unsigned long i = 0; i < output.size(); i++){
-        if (isdigit(output[i]) == false){
-            return -1;
-        }
-    }
-    return stoi(data[1]);
-}
-
 int Miscellanies::sourceAirportID(string line){
     vector<string> data;
     stringstream ss(line);
@@ -198,19 +136,3 @@ int Miscellanies::destAirportID(string line){
     return stoi(data[5]);
 }
 
-int Miscellanies::numStops(string line){
-    vector<string> data;
-    stringstream ss(line);
-    while(ss.good()){
-        string substring;
-        getline(ss,substring,',');
-        data.push_back(substring);
-    }
-   string output = data[7];
-    for (unsigned long i = 0; i < output.size(); i++){
-        if (isdigit(output[i]) == false){
-            return -1;
-        }
-    }
-    return stoi(data[7]);
-}
