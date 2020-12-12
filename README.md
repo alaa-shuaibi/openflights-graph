@@ -4,7 +4,7 @@ Final Project
 
 Summary: This program implements graph-based traversal algorithms on the OpenFlights airport and routes datasets in C++. https://openflights.org/data.html
 
-Goals: Find the shortest paths between two cities or countries through air travel. Traveling paths include Djikstra, Landmark, and Breadth-First Search (BFS) to help users travel to  other places in the world.
+Goals: Find the shortest flight routes between two airports. Traveling paths include Djikstra, Landmark, and Breadth-First Search (BFS) to help users travel to  other places in the world.
 
 Warning: Use of EWS Machine recommended. Make sure to scroll up to see output as the program continually takes user input to run different algorithms, traversals, or read new files.
 
@@ -17,7 +17,7 @@ Steps:
     1. if you get an error mentioning llvm/6.0.1
         type "module load llvm/6.0.1"
 
-2. Type ./finalproject
+2. Type ./main
 
 3. First, the program takes user input in Terminal for two files:
     1. AirportFile: This serves as the nodes for the graph.
