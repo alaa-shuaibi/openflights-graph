@@ -1,6 +1,7 @@
 #pragma once
 #include "edge.h"
 #include <unordered_map>
+#include <algorithm>
 
 /**
  * Represents a directed graph used to load the OpenFlights dataset. 

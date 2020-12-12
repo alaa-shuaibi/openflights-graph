@@ -13,7 +13,6 @@ Graph::Graph(std::vector<AirportID> airports) {
 
 void Graph::insertAirport(AirportID airport) {
     if (adjacency_list.find(airport) == adjacency_list.end()) {
-        //std::cout << airport.
         airports.push_back(airport);
         adjacency_list[airport] = std::unordered_map<AirportID, Edge>();
     }
@@ -21,8 +20,7 @@ void Graph::insertAirport(AirportID airport) {
 
 void Graph::insertEdge(AirportID start, AirportID end, long double distance) {
     // Checks if both airports exist in the graph.
-    if (adjacency_list.find(start) == adjacency_list.end() || adjacency_list.find(end) == adjacency_list.end()) {
-        
+    if (adjacency_list.find(start) == adjacency_list.end() || adjacency_list.find(end) == adjacency_list.end()) {   
         return;
     }
 
@@ -60,8 +58,8 @@ std::vector<AirportID> Graph::getAdjacentAirports(AirportID source) {
     }
 
     for (size_t i = 0; i < airports.size(); i++) {
-        if (adjacency_list[i].find(source) != adjacency_list[i].end()) {
-            adjAirports.push_back(i);
+        if (adjacency_list[airports[i]].find(source) != adjacency_list[airports[i]].end()) {
+            adjAirports.push_back(airports[i]);
         }
     }
 
@@ -81,8 +79,8 @@ std::vector<AirportID> Graph::getAdjacentAirports(AirportID source, bool sourceI
         }
     } else {
         for (size_t i = 0; i < airports.size(); i++) {
-            if (adjacency_list[i].find(source) != adjacency_list[i].end()) {
-                adjAirports.push_back(i);
+            if (adjacency_list[airports[i]].find(source) != adjacency_list[airports[i]].end()) {
+                adjAirports.push_back(airports[i]);
             }
         }
     }
@@ -106,7 +104,7 @@ std::vector<Edge> Graph::getAllEdges() {
     std::vector<Edge> edges;
 
     for (size_t i = 0; i < airports.size(); i++) {
-        for (auto it : adjacency_list[i]) {
+        for (auto it : adjacency_list[airports[i]]) {
             edges.push_back(it.second);
         }
     }

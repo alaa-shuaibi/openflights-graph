@@ -10,6 +10,8 @@ Graph OpenFlights::getGraph() {
 }
 
 AirportID OpenFlights::getAirportID(string name) {
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c){return std::tolower(c);});
+
     if (nameToAirportID.find(name) != nameToAirportID.end()) {
         return nameToAirportID[name];
     }
@@ -22,9 +24,10 @@ void OpenFlights::loadAirports(const string & filename){
     ifstream myfile(filename);
     std::vector<AirportID> airports;
 
-    while(getline(myfile,txt)){
+    while(getline(myfile,txt)) {
         AirportID ID = Miscellanies::getIndex(txt);
         string name = Miscellanies::airport_name(txt);
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c){return std::tolower(c);});
         string city = Miscellanies::airport_city(txt);
         string country = Miscellanies::airport_country(txt);
         long double latitude = Miscellanies::airport_latitude(txt);
@@ -38,23 +41,18 @@ void OpenFlights::loadAirports(const string & filename){
 
     graph = Graph(airports);
     
-    //myfile.close();
+    myfile.close();
 }
 
 void OpenFlights::loadRoutes(const string & filename){
-    
-    //std::cout <<"entering loadRoutes" <<std::endl;
     string txt;
     ifstream myfile(filename);
 
-    while(getline(myfile,txt)){
-        
-    //std::cout <<"not entering while loop" <<std::endl;
+    while(getline(myfile,txt)) {
         AirportID start = Miscellanies::sourceAirportID(txt);
         AirportID end = Miscellanies::destAirportID(txt);
+
         if (start == -1 || end == -1) {
-            
-    std::cout <<"within if start:" << start << " end: " << end <<std::endl;
             continue;
         }
 

@@ -21,11 +21,9 @@ TEST_CASE("We get the basic airport information that is important") {
         country_ = ms.airport_country(txt);
         lat = ms.airport_latitude(txt);
         longi = ms.airport_longitude(txt);
-        std::cout << ID << " " << name_ << " " << city_ << " " << country_ << " " << lat << " " << longi << " " << std::endl;
+        //std::cout << ID << " " << name_ << " " << city_ << " " << country_ << " " << lat << " " << longi << " " << std::endl;
         cnt++;
     }
-    
-
 }
 
 TEST_CASE("Calculate distances through lat & long") {
@@ -43,14 +41,14 @@ TEST_CASE("Calculate distances through lat & long") {
         if (cnt == idx_1){
             lat_1 = ms.airport_latitude(txt);
             longi_1 = ms.airport_longitude(txt);
-            std::cout << cnt << " " << lat_1 << " " << longi_1 << " " << std::endl;
+            //std::cout << cnt << " " << lat_1 << " " << longi_1 << " " << std::endl;
         }
         if (cnt == idx_2){
             lat_2 = ms.airport_latitude(txt);
             longi_2 = ms.airport_longitude(txt);
-            std::cout << cnt << " " << lat_2 << " " << longi_2 << " " << std::endl;
+            //std::cout << cnt << " " << lat_2 << " " << longi_2 << " " << std::endl;
         }
         cnt++;
     }
-    std::cout << ms.distance(lat_1, longi_1, lat_2, longi_2) << std::endl;
+    //std::cout << ms.distance(lat_1, longi_1, lat_2, longi_2) << std::endl;
 }
