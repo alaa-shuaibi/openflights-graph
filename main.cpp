@@ -61,9 +61,14 @@ int main() {
         std:: cout << "\nType 1, 2, 3, or 4 for the following:\n1 - BFS\n2 - Dijkstra's Algorithm\n3 - Landmark Path\n4 - Input new File\n";
     
         std::cin >> input;
-
+        if(input == 0){ //call DFS
+            //std::cout << "DFS call" << std::endl;
+            auto airportVec = algo.DFS(g);
+            //iterate through and print
+            
+        }
         if(input == 1){ //call BFS
-            std::cout << "BFS call" << std::endl;
+           //std::cout << "BFS call" << std::endl;
             auto airportVec = algo.BFS(g);
             //iterate through and print
             
