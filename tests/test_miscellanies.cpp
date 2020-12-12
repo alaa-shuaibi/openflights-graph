@@ -3,8 +3,7 @@
 #include <sstream>
 #include <fstream>
 
-TEST_CASE("We get the basic airport information that is important") {
-    //Miscellanies ms = Miscellanies();
+TEST_CASE("Airport Data is properly retrieved.") {
     std::ifstream myfile("tinyAirport.txt");
     int ID;
     string name_;
@@ -21,7 +20,6 @@ TEST_CASE("We get the basic airport information that is important") {
     lat = Miscellanies::airport_latitude(txt);
     longi = Miscellanies::airport_longitude(txt);
 
-
     REQUIRE(ID == 4049);
     REQUIRE(name_ == "\"University of Illinois Willard Airport\"");
     REQUIRE(city_ == "\"Champaign\"");
@@ -30,8 +28,7 @@ TEST_CASE("We get the basic airport information that is important") {
     REQUIRE(longi == -88.27809906);
 }
 
-TEST_CASE("Calculate distances through lat & long") {
-    
+TEST_CASE("Distances are calculated correctly.") {
     long double lat_1 = -6.0985;
     long double lat_2 = -4.8674;
     long double longi_1 = 45.923;
@@ -40,5 +37,4 @@ TEST_CASE("Calculate distances through lat & long") {
     long double ans = Miscellanies::distance(lat_1,longi_1,lat_2,longi_2);
     
     REQUIRE(std::floor(ans) == std::floor(10771.37));
-    
 }
