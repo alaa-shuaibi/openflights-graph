@@ -13,6 +13,8 @@ Steps:
     1. If you want to test with your own files, make sure the files are included in the same folder.
     
 1. Type make
+    1. if you get an error mentioning llvm/6.0.1
+        type "module load llvm/6.0.1"
 
 2. Type ./finalproject
 

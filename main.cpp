@@ -8,24 +8,7 @@ int main() {
     * 
     * modify main as you see fit. 
     */
-/*
-    std::cout << "Rahul's test output message indicates MakeFile is working!" << std::endl;
 
-    //make the fileReader constructor so that the file_to_vector function can be called
-    readFromFile *fileReader = new readFromFile(); 
-
-    //setup vector to see what readFromFile is doing, all data coming from airports.txt
-    std::vector<std::string> testRFF = fileReader->file_to_vector("airports.txt");
-
-    //it looks like it's stopping in chunks instead of each line. But some spaces are included, others aren't
-    std::cout << "vector contents:" << testRFF[0] << testRFF[1] << testRFF[2] << testRFF[3] << std::endl;
-
-    //same output but added a space between each index. This is the proper full line in the airports.txt file
-    std::cout << "vector contents:" << testRFF[0] << " " <<  testRFF[1] << " " << testRFF[2] << " " << testRFF[3] << std::endl;
-
-    //the size of the vector is 26832. About 3.48 indexes for each line of the airports.txt file
-    std::cout << "size = : " << testRFF.size() << std::endl;
-*/  
     int input, start, end, checkPoint;
     string fileAirports, fileRoutes;
     //if invalid input is provided twice, end program
@@ -34,27 +17,18 @@ int main() {
     std::cout << "Welcome to a Graph-Based implementation of Depth-First Search(DFS), Breadth First Traversal (BFS), Dijkstra's Shortest Path, and Landmark Path Algorithms for the OpenFlights dataset\n\n";
     std::cout <<"Authors (listed alphabetically): Alaa Shuaibi (ashuai6), Chidambara Anagani (canaga2), Praneeth Mekapati (pm14), and Rahul Vasanth (rvasant2)\n";
 
-    Algorithms algo = Algorithms();
-
+//user input for filenames
     std::cout << "Input the name of your (properly formatted) Airports file:";
     std::cin >> fileAirports;
     std::cout << "Input the name of your (properly formatted) Routes file:";
     std::cin >> fileRoutes;
-    
-    // this can be repeated for routes/airlines/airports if necessary
-    //hardcoded in for now.
 
-    //Load File First
-    //OpenFlights o= OpenFlights("airports.txt", "routes.txt");
     OpenFlights o = OpenFlights(fileAirports, fileRoutes);
+    //take the graph that has already been constructed for use of Algorithms
     Graph g = o.getGraph();
-    //o.loadEdges(false);
-    
-    //o.loadRoutes("routes.txt");
+    //to call algorithms and traversals
+    Algorithms algo = Algorithms();
 
-
-    
-    //If Valid, Construct Graph
 
     do{
         std::cout << "g.getAllAirports().size() = " << g.getAllAirports().size() << std::endl;
