@@ -40,6 +40,7 @@ int main() {
     std::cin >> fileAirports;
     std::cout << "Input the name of your (properly formatted) Routes file:";
     std::cin >> fileRoutes;
+    
     // this can be repeated for routes/airlines/airports if necessary
     //hardcoded in for now.
 
@@ -56,6 +57,7 @@ int main() {
     //If Valid, Construct Graph
 
     do{
+        std::cout << "g.getAllAirports().size() = " << g.getAllAirports().size() << std::endl;
         std:: cout << "\nType 1, 2, 3, or 4 for the following:\n1 - BFS\n2 - Dijkstra's Algorithm\n3 - Landmark Path\n4 - Input new File\n";
     
         std::cin >> input;
