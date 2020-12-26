@@ -36,7 +36,7 @@ int main() {
         std::cout << std::endl;
 
         if (input == 0) { // Calls BFS Traversal
-            // Can be commented out for long textfiles.
+            // Can be commented out for long textfiles. 
             std::cout << "BFS Traversal: " << o.pathToString(algo.BFS(g)) << std::endl;
         } else if (input == 1) { // Calls DFS Traversal
             // Can be commented out for long textfiles.
