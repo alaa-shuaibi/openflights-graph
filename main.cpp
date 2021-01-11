@@ -1,11 +1,11 @@
 #include "OpenFlights.h"
 
 int main() {
-    // Variables for user input.
+    // Variables for user input
     int input, start, end, checkPoint;
     string fileAirports, fileRoutes;
 
-    // Variable to keep track of invalid inputs.
+    // Variable to keep track of invalid inputs
     int toExit = 0;
     
     std::cout << "OpenFlights Graph - CS 225 Final Project\n\n";
@@ -18,7 +18,7 @@ int main() {
     std::cin >> fileRoutes;
     std::cout << std::endl;
 
-    // Initializes required objects.
+    // Initializes required objects
     OpenFlights o = OpenFlights(fileAirports, fileRoutes);
     Graph g = o.getGraph();
     Algorithms algo = Algorithms();
@@ -30,10 +30,10 @@ int main() {
         std::cout << std::endl;
 
         if (input == 0) { // Calls BFS
-            // Can be commented out for long textfiles. 
+            // Can be commented out for long textfiles
             std::cout << "BFS Traversal: " << o.pathToString(algo.BFS(g)) << std::endl;
         } else if (input == 1) { // Calls DFS
-            // Can be commented out for long textfiles.
+            // Can be commented out for long textfiles
             std::cout << "DFS Traversal: " << o.pathToString(algo.DFS(g)) << std::endl;
         } else if (input == 2) { // Calls Dijkstra
             std::cout << "Input Starting AirportID: ";
@@ -64,16 +64,16 @@ int main() {
             std::cout << std::endl;
 
             std::cout << "Landmark Path: " << o.pathToString(algo.Landmark(g, start, end, checkPoint)) << std::endl;
-        } else if (input == 4) { // Replaces current files with new files.
+        } else if (input == 4) { // Replaces current files with new files
             std::cout << "Input New Airports file: ";
             std::cin >> fileAirports;
             std::cout << "Input New Routes file: ";
             std::cin >> fileRoutes;
 
-            // Replaces the OpenFlights object and creates a new graph.
+            // Replaces the OpenFlights object and creates a new graph
             o = OpenFlights(fileAirports, fileRoutes);
             g = o.getGraph();
-        } else { // Allows one chance for invalid input.
+        } else { // Allows one chance for invalid input
             std::cout << "Invalid Input." << std::endl;
             toExit++;
         }
