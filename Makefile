@@ -1,4 +1,4 @@
-# Source: Final Project Demo GitHub (with some adjustments)
+# Source: CS 225 Final Project Demo on GitHub (with some adjustments)
 EXENAME = main
 OBJS = main.o OpenFlights.o algorithms.o graph.o edge.o miscellanies.o readFromFile.o
 CXX = clang++

@@ -14,7 +14,7 @@
  * as a vector of airlines that travel between those two airports in 
  * the direction of the edge. 
  * 
- * @note This class was heavily inspired by the graph class in lab_ml.
+ * @note This class was heavily inspired by the graph class in lab_ml (CS 225 Assignment).
  */
 class Graph {
     public:

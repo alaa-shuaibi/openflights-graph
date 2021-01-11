@@ -7,7 +7,7 @@ typedef int AirportID;
 /**
  * Represents an Edge between a starting airport and ending airport. 
  * 
- * @note This class was heavily inspired by the graph class in lab_ml.
+ * @note This class was heavily inspired by the graph class in lab_ml (CS 225 Assignment).
  */
 class Edge {
     public:
