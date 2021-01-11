@@ -29,4 +29,4 @@
         
     * Enter 4 to change the input files.
     
-    * Enter any other character twice to exit the program.
+    * Enter any other integer twice to exit the program.
