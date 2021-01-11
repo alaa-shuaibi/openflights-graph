@@ -1,7 +1,7 @@
 #include "OpenFlights.h"
 
 int main() {
-    // These serve as userInputs. start, end, and checkPoint are used in traversals while input provides user options.
+    // Variables for user input.
     int input, start, end, checkPoint;
     string fileAirports, fileRoutes;
 
