@@ -21,7 +21,7 @@
         
     * Enter 2 to run Dijkstra.
         - Dijkstra takes in two input, a starting airport and an ending airport.
-        - Outputs the shortest path between the startign airport and ending airport.
+        - Outputs the shortest path between the starting airport and ending airport.
         
     * Enter 3 to run Landmark.
         - Landmark takes in three input: a starting airport, an ending airport, and a checkpoint airport.
