@@ -4,7 +4,7 @@
 
 **Summary**: This program loads in data from https://openflights.org/data.html into a graph that supports BFS, DFS, Dijkstra, and Landmark algorithms.
 
-**Requirements**: This program was designed to run on the EWS machines at UIUC. To run this program on your own machine, refer to https://courses.engr.illinois.edu/cs225/fa2020/resources/own-machine/ for instructions. Keep in mind, these instructions are written for UIUC students taking CS 225 so feel free to find other guides meant for a broader audience.
+**Requirements**: This program was designed to run on the EWS machines at UIUC. To run this program on your machine, refer to https://courses.engr.illinois.edu/cs225/fa2020/resources/own-machine/ for instructions. Keep in mind, these instructions are written for UIUC students taking CS 225 so feel free to find other guides meant for a broader audience.
 
 **How to use this program**:
 
