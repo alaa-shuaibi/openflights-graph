@@ -8,7 +8,7 @@
 
 **How to use this program**:
 
-1. Change your current working directory to the location of this program and then enter `$ make && ./main` in terminal to begin.
+1. Change your current working directory to the location of this program and then enter `make && ./main` in terminal to begin.
 
 2. Next, the terminal will prompt you to enter two text files. The first text file should contain the data for all airports you're interested in while the second text file should contain the data for all routes you're interested in. For information on how data in both text files should be formatted, check out the "Airport" section and "Route" section on https://openflights.org/data.html. Note: If you're interested in using the data provided by OpenFlights, use the airports.txt and routes.txt files that are located inside of this repository.
 
